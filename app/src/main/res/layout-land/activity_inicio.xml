@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lap_21"
-    tools:context=".MainActivity">
+    tools:context=".InicioActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="528dp"
-        android:layout_height="110dp"
+        android:layout_width="648dp"
+        android:layout_height="113dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.062"
-        app:srcCompat="@drawable/logo3" />
+        app:srcCompat="@drawable/logo4_sf" />
 
     <TextView
         android:id="@+id/textViewmensage1"
@@ -39,8 +39,8 @@
     <Button
         android:id="@+id/buttonInicio"
         style="@style/boton1"
-        android:layout_width="548dp"
-        android:layout_height="52dp"
+        android:layout_width="560dp"
+        android:layout_height="50dp"
         android:text="INICIO"
         android:textSize="14sp"
         app:cornerRadius="30dp"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_salir"
         android:layout_width="175dp"
         android:layout_height="43dp"
         android:backgroundTint="#A7A2A8"
