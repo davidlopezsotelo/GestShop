@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_pedidos" />
 
     <Button
-        android:id="@+id/button_salir2"
+        android:id="@+id/button_salir_menu"
         android:layout_width="180dp"
         android:layout_height="54dp"
         android:layout_marginTop="13dp"

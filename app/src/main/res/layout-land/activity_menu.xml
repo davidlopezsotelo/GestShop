@@ -74,7 +74,7 @@
                 app:cornerRadius="30dp" />
 
             <Button
-                android:id="@+id/button_salir2"
+                android:id="@+id/button_salir_menu"
                 android:layout_width="700dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"

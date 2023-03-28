@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#80E4DAC6"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/textViewDia"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:fontFamily="@font/mia2"
+                    android:text="CONTABILIDAD DIARA"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/editTextDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="CALENDARIO"
+                    android:inputType="date"
+                    android:textAlignment="center" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp" />
+
+                <EditText
+                    android:id="@+id/editTextIngresos"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/estilo_bordes_editext"
+                    android:ems="10"
+                    android:fontFamily="@font/mia3"
+                    android:hint="INGRESOS"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp" />
+
+                <EditText
+                    android:id="@+id/editTextGastos"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/estilo_bordes_editext"
+                    android:ems="10"
+                    android:fontFamily="@font/mia3"
+                    android:hint="GASTOS"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp" />
+
+                <TextView
+                    android:id="@+id/textResultado"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/estilo_bordes_editext"
+                    android:fontFamily="@font/mia3"
+                    android:text="RESULTADO"
+                    android:textAlignment="center"
+                    android:textSize="18dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <Button
+                    android:id="@+id/buttonResultado"
+                    style="@style/boton1"
+
+                    android:layout_width="222dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_horizontal"
+                    android:text="RESULTADO"
+
+                    android:textSize="24sp"
+                    app:cornerRadius="50dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <Button
+                    android:id="@+id/buttonGuardaDia"
+                    style="@style/boton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_horizontal"
+                    android:text="GUARDAR DIA"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:cornerRadius="50dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/buttonMenu"
+                    style="@style/botonVerde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MENU"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:cornerRadius="50dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
