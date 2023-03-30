@@ -12,6 +12,15 @@
         android:theme="@style/Theme.GestShop"
         tools:targetApi="31">
         <activity
+            android:name=".AgendaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PedidosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CuentasActivity"
+            android:exported="false" />
+        <activity
             android:name=".DiaActivity"
             android:exported="false" />
         <activity

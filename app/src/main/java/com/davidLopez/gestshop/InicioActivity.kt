@@ -1,10 +1,12 @@
 package com.davidLopez.gestshop
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 
 class InicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +27,22 @@ class InicioActivity : AppCompatActivity() {
             finish()
         }
         botonSalir.setOnClickListener{
-            finish()
+            //creamos el alert Dialog
+            val dialog= AlertDialog.Builder(this)
+            //creamos el mensaje que aparecera
+            dialog.setMessage("Quieres salir de GestShop ???")
+                //si el dialog es cancelable
+                .setCancelable(false)
+                //accion y texto del boton positivo
+                .setPositiveButton("SI", DialogInterface.OnClickListener{ dialog, id->finish()})
+                //texto y accion del boton negativo
+                .setNegativeButton("NO", DialogInterface.OnClickListener{ dialog, id -> dialog.cancel()})
+            //creamos la caja de dialogo
+            val alert=dialog.create()
+            //ponemos el titulo a la caja de dialogo
+            alert.setTitle("SALIR!!!!!")
+            //mostrar
+            alert.show()
         }
     }
 
