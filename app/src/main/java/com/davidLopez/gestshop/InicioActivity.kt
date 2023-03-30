@@ -6,19 +6,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
+private lateinit var analytics: FirebaseAnalytics
 class InicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
 
+        analytics = Firebase.analytics
 
         setup()
     }
 
     private fun setup(){
         val botonLogin=findViewById<Button>(R.id.buttonLogin)
-        val botonRegistro=findViewById<Button>(R.id.buttonRegistro)
+        val botonRegistro=findViewById<Button>(R.id.buttonRegistroIni)
         val botonSalir=findViewById<Button>(R.id.button_salir)
 
         botonLogin.setOnClickListener{
@@ -30,7 +35,7 @@ class InicioActivity : AppCompatActivity() {
         botonRegistro.setOnClickListener{
             val i=Intent(this,RegistroActivity::class.java)
             startActivity(i)
-            finish()
+
         }
 
         botonSalir.setOnClickListener{

@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.059" />
 
     <Button
-        android:id="@+id/buttonRegistro"
+        android:id="@+id/buttonRegistroIni"
         style="@style/boton1"
         android:layout_width="298dp"
         android:layout_height="71dp"
@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistroIni"
         app:layout_constraintVertical_bias="0.085" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
