@@ -4,7 +4,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 
@@ -18,14 +17,22 @@ class InicioActivity : AppCompatActivity() {
     }
 
     private fun setup(){
-        val botonInicio=findViewById<Button>(R.id.buttonInicio)
+        val botonLogin=findViewById<Button>(R.id.buttonLogin)
+        val botonRegistro=findViewById<Button>(R.id.buttonRegistro)
         val botonSalir=findViewById<Button>(R.id.button_salir)
 
-        botonInicio.setOnClickListener{
-            val i=Intent(this,MenuActivity::class.java)
+        botonLogin.setOnClickListener{
+            val i=Intent(this,LoginActivity::class.java)
             startActivity(i)
             finish()
         }
+
+        botonRegistro.setOnClickListener{
+            val i=Intent(this,RegistroActivity::class.java)
+            startActivity(i)
+            finish()
+        }
+
         botonSalir.setOnClickListener{
             //creamos el alert Dialog
             val dialog= AlertDialog.Builder(this)
