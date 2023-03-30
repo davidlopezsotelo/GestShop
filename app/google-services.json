@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "274001407221",
+    "project_id": "gestshop-ad57e",
+    "storage_bucket": "gestshop-ad57e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274001407221:android:a7c5cf9e4a9509467069bc",
+        "android_client_info": {
+          "package_name": "com.davidLopez.gestshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274001407221-49o0hlif2928b407k1h6c8au07kor18f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.davidLopez.gestshop",
+            "certificate_hash": "bdd6c530f2d164be6813c42f6c225d5088829070"
+          }
+        },
+        {
+          "client_id": "274001407221-ct04bhl4lsnt12ra5p502bp84ago4oli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0hQi08ju1nkuNx310eQ-REajl1rIHE4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274001407221-ct04bhl4lsnt12ra5p502bp84ago4oli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
