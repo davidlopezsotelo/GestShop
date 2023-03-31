@@ -84,7 +84,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/contraseñaEt"
+                    android:id="@+id/contrasenaEt"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -108,7 +108,7 @@
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/RepContraseñaEt"
+                        android:id="@+id/RepContrasenaEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/icono_lock"
@@ -125,8 +125,8 @@
     <Button
         android:id="@+id/buttonRegistroReg"
         style="@style/boton1"
-        android:layout_width="298dp"
-        android:layout_height="71dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:text="REGISTRO"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,10 +138,11 @@
 
     <Button
         android:id="@+id/button_salir_reg"
-        android:layout_width="180dp"
-        android:layout_height="54dp"
-        android:backgroundTint="#A7A2A8"
-        android:text="salir"
+        style="@style/boton1"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:text="LOGIN"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
