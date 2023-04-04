@@ -6,16 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-
         setup()
 
     }
+
 
     private fun setup() {
         //botones-----------------------------------------------------------------------------------
@@ -65,11 +66,9 @@ class MenuActivity : AppCompatActivity() {
             alert.setTitle("SALIR!!!!!")
             //mostrar
             alert.show()
-
+            FirebaseAuth.getInstance().signOut()
 
         }
-
-
 
     }
 

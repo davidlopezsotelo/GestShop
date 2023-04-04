@@ -16,7 +16,7 @@ class InicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
 
-        //analytics = Firebase.analytics
+        analytics = Firebase.analytics
 
         setup()
     }

@@ -19,21 +19,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroActivity : AppCompatActivity() {
 
-    // declaramos variables
-
-    /*val BotonRegistro = findViewById<Button>(R.id.buttonRegistroReg)
-    val BotonLogin = findViewById<Button>(R.id.button_salir_reg)//
-
-    val TextoNombre = findViewById<EditText>(R.id.NombreEt)
-    val TextoEmail = findViewById<EditText>(R.id.correoEt)
-    val TextoContrasena = findViewById<EditText>(R.id.contrasenaEt)
-    val TextoRepContrasena = findViewById<EditText>(R.id.RepContrasenaEt)
-*/
     var Nombre=""
     var Email=""
     var Password = ""
     var RepPassword=""
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +41,7 @@ class RegistroActivity : AppCompatActivity() {
 
 
         BotonRegistro.setOnClickListener {
-            validarDAtos()
+            validarDatos()
         }
         BotonLogin.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
@@ -61,7 +50,7 @@ class RegistroActivity : AppCompatActivity() {
     }
 
 
-    private fun validarDAtos(){
+    private fun validarDatos(){
 
         val TextoNombre = findViewById<EditText>(R.id.NombreEt)
         val TextoEmail = findViewById<EditText>(R.id.correoEt)
@@ -73,7 +62,7 @@ class RegistroActivity : AppCompatActivity() {
         Password=TextoContrasena.text.toString()
         RepPassword=TextoRepContrasena.text.toString()
 
-        FirebaseAuth.getInstance()
+
 
         if (TextUtils.isEmpty(Nombre)){
             Toast.makeText(this, "Ingrese nombre",Toast.LENGTH_SHORT).show()

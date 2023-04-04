@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="375dp"
-        android:layout_height="136dp"
+        android:layout_width="372dp"
+        android:layout_height="149dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/textViewmensage1"
-        android:layout_width="399dp"
-        android:layout_height="129dp"
+        android:layout_width="361dp"
+        android:layout_height="128dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mia1"
@@ -30,18 +30,19 @@
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0E0C0D"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <Button
         android:id="@+id/buttonLogin"
         style="@style/boton1"
-        android:text="LOGIN"
+        android:text="INICIAR SESION"
+        android:textSize="20sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +56,8 @@
         style="@style/boton1"
         android:layout_width="298dp"
         android:layout_height="71dp"
-        android:text="REGISTRO"
+        android:text="REGISTRARSE"
+        android:textSize="20sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

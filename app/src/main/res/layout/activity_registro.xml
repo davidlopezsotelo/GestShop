@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="279dp"
-        android:layout_height="83dp"
+        android:layout_width="270dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +21,8 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="236dp"
-        android:layout_height="43dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/mia2"
         android:text="REGISTRATE"
@@ -127,7 +127,8 @@
         style="@style/boton1"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="REGISTRO"
+        android:text="REGISTRARSE"
+        android:textSize="20sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +142,8 @@
         style="@style/boton1"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="LOGIN"
+        android:text="INICIAR SESION"
+        android:textSize="20sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
