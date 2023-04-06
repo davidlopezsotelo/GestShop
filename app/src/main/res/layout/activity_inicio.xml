@@ -39,9 +39,9 @@
         app:layout_constraintVertical_bias="0.086" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonEntrar"
         style="@style/boton1"
-        android:text="INICIAR SESION"
+        android:text="ENTRAR"
         android:textSize="20sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEntrar"
         app:layout_constraintVertical_bias="0.073" />
 
     <Button

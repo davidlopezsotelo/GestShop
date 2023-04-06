@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
@@ -24,13 +25,14 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         //inicializamos Firebase
         auth = Firebase.auth
+
+
         setup()
     }
 
@@ -38,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
     var Password = ""
 
     private fun setup() {
+
+
 
         val BotonEntrar= findViewById<Button>(R.id.button_entrar)
         val BotonRegistro=findViewById<Button>(R.id.buttonRegistroLog)
@@ -104,5 +108,8 @@ class LoginActivity : AppCompatActivity() {
         val dialog: AlertDialog =builder.create()
         dialog.show()
     }
+
+
+
 
 }

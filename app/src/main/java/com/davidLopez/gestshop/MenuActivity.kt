@@ -25,7 +25,7 @@ class MenuActivity : AppCompatActivity() {
         val botonCuentas=findViewById<Button>(R.id.button_cuentas)
         val botonPedidos=findViewById<Button>(R.id.button_pedidos)
         val botonAgenda=findViewById<Button>(R.id.button_agenda)
-        val botonSalir=findViewById<Button>(R.id.button_salir_menu)
+        val botonCerrarSesion=findViewById<Button>(R.id.button_cerrarSesion)
 
         botonAbrirdia.setOnClickListener{
             val i =Intent(this,DiaActivity::class.java)
@@ -47,8 +47,7 @@ class MenuActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        botonSalir.setOnClickListener{
-           // finish()
+        botonCerrarSesion.setOnClickListener{
 
             //creamos el alert Dialog
             val dialog=AlertDialog.Builder(this)
@@ -57,19 +56,22 @@ class MenuActivity : AppCompatActivity() {
             //si el dialog es cancelable
                 .setCancelable(false)
             //accion y texto del boton positivo
-                .setPositiveButton("SI",DialogInterface.OnClickListener{dialog,id->finish()})
+                .setPositiveButton("SI",DialogInterface.OnClickListener{dialog,id->salir()})
             //texto y accion del boton negativo
                 .setNegativeButton("NO",DialogInterface.OnClickListener{dialog, id -> dialog.cancel()})
             //creamos la caja de dialogo
             val alert=dialog.create()
             //ponemos el titulo a la caja de dialogo
-            alert.setTitle("SALIR!!!!!")
+            alert.setTitle("CERRAR SESION")
             //mostrar
             alert.show()
-            FirebaseAuth.getInstance().signOut()
-
         }
 
+
+    }
+    private fun salir() {
+        FirebaseAuth.getInstance().signOut()
+        finish()
     }
 
 

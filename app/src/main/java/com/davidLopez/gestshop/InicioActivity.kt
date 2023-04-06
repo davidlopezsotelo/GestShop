@@ -8,28 +8,43 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 private lateinit var analytics: FirebaseAnalytics
+private lateinit var auth: FirebaseAuth
+
+
 class InicioActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
 
         analytics = Firebase.analytics
+        auth=Firebase.auth
+
 
         setup()
+
     }
 
+
+
+
+
     private fun setup(){
-        val botonLogin=findViewById<Button>(R.id.buttonLogin)
+
+
+        val botonEntrar=findViewById<Button>(R.id.buttonEntrar)
         val botonRegistro=findViewById<Button>(R.id.buttonRegistroIni)
         val botonSalir=findViewById<Button>(R.id.button_salir)
 
-        botonLogin.setOnClickListener{
-            val i=Intent(this,LoginActivity::class.java)
-            startActivity(i)
-            finish()
+        botonEntrar.setOnClickListener{
+            VerificarUsuario()
+
         }
 
         botonRegistro.setOnClickListener{
@@ -46,7 +61,7 @@ class InicioActivity : AppCompatActivity() {
                 //si el dialog es cancelable
                 .setCancelable(false)
                 //accion y texto del boton positivo
-                .setPositiveButton("SI", DialogInterface.OnClickListener{ dialog, id->finish()})
+                .setPositiveButton("SI", DialogInterface.OnClickListener{ dialog, id->salir()})
                 //texto y accion del boton negativo
                 .setNegativeButton("NO", DialogInterface.OnClickListener{ dialog, id -> dialog.cancel()})
             //creamos la caja de dialogo
@@ -58,7 +73,28 @@ class InicioActivity : AppCompatActivity() {
         }
     }
 
+    private fun salir() {
+        FirebaseAuth.getInstance().signOut()
+        finish()
+    }
 
-    // funciones de los botones
+
+//si el usuario tiene sesion abierta, te manda al menu principal
+
+    fun VerificarUsuario(){
+       // FirebaseUser= FirebaseAuth.getInstance().currentUser!!
+
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            // User is signed in
+            startActivity(Intent(this,MenuActivity::class.java))
+            finish()
+        } else {
+            // No user is signed in
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
+
+    }
 
 }
