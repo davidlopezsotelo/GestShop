@@ -8,8 +8,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
-class DiaActivity : AppCompatActivity() {
+class DiaActivity : AppCompatActivity() {//Fin class
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dia)
@@ -23,7 +28,7 @@ class DiaActivity : AppCompatActivity() {
         // variables para definir botones
 
         val botonResultado=findViewById<Button>(R.id.buttonResultado)
-        val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
+       // val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
 
         // calendario-------------------------------------------------------------------------------
@@ -44,9 +49,16 @@ class DiaActivity : AppCompatActivity() {
             calcular()
         }
 
+        /*botonGuardar.setOnClickListener{
+            val i=Intent(this,GuardarActivity::class.java)
+            startActivity(i)
+            guardar()
+
+        }*/
 
 
-    }
+
+    } //fin setup(
 
     // CALENDARIO--------------------------------------------------------------------------
 
@@ -70,12 +82,14 @@ class DiaActivity : AppCompatActivity() {
 
     //calcular ----------------------------------------------------------------------------------
 
-    fun calcular(){
+    private fun calcular(){
 
+        val textoFecha=findViewById<EditText>(R.id.etDate)
         val textSaldo=findViewById<EditText>(R.id.editTextSaldo_caja)
         val textIngresos=findViewById<EditText>(R.id.editTextIngresos)
         val textGasto=findViewById<EditText>(R.id.editTextGastos)
         val textResultado=findViewById<TextView>(R.id.textResultado)
+        val fecha=textoFecha.text.toString()
 
         var saldo=0.00
         var ingresos=0.00
@@ -83,15 +97,55 @@ class DiaActivity : AppCompatActivity() {
         var resultado=0.00
 
 
-        saldo= textSaldo.text.toString().toDouble()
-        ingresos= textIngresos.text.toString().toDouble()
-        gastos= textGasto.text.toString().toDouble()
-        resultado=saldo+ingresos-gastos
+        if (fecha.isNotEmpty()) {
 
-        textResultado.setText(" "+resultado)
+            saldo = textSaldo.text.toString().toDouble()
+            ingresos = textIngresos.text.toString().toDouble()
+            gastos = textGasto.text.toString().toDouble()
+            resultado = (saldo + ingresos - gastos)
+            //redondeamos a dos decimales:
+            val df= DecimalFormat("#.##")
+            df.roundingMode = RoundingMode.DOWN
+            val roundoff = df.format(resultado)
+
+            textResultado.setText(" "+ roundoff)
+
+        }else{
+            Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
+        }
+
+
+
+        //Shared preference para conservar los datos al volver a la vista
+
+        //sobreescribir el metodo onPause() donde  se ejecutara el shared:
+
+
+
+
+
+
+        val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
+        botonGuardar.setOnClickListener{
+
+            if (fecha.isNotEmpty()) {
+                //guardamos los datos en un binding
+                val intent = Intent(this, GuardarActivity::class.java)
+                intent.putExtra("date", fecha)
+                intent.putExtra("saldo", saldo)
+                intent.putExtra("ingresos", ingresos)
+                intent.putExtra("gastos", gastos)
+                intent.putExtra("resultado", resultado)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
 
 
 
-}//Fin class
+
+}

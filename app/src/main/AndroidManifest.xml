@@ -12,6 +12,9 @@
         android:theme="@style/Theme.GestShop"
         tools:targetApi="31">
         <activity
+            android:name=".GuardarActivity"
+            android:exported="false" />
+        <activity
             android:name=".ArchivoActivity"
             android:exported="false" />
         <activity
