@@ -17,7 +17,6 @@ class MenuActivity : AppCompatActivity() {
 
     }
 
-
     private fun setup() {
         //botones-----------------------------------------------------------------------------------
 
@@ -26,6 +25,7 @@ class MenuActivity : AppCompatActivity() {
         val botonPedidos=findViewById<Button>(R.id.button_pedidos)
         val botonAgenda=findViewById<Button>(R.id.button_agenda)
         val botonCerrarSesion=findViewById<Button>(R.id.button_cerrarSesion)
+        val botonArchivos=findViewById<Button>(R.id.button_archivos)
 
         botonAbrirdia.setOnClickListener{
             val i =Intent(this,DiaActivity::class.java)
@@ -42,6 +42,11 @@ class MenuActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        botonArchivos.setOnClickListener{
+            val i=Intent(this,ArchivoActivity::class.java)
+            startActivity(i)
+        }
+
         botonAgenda.setOnClickListener{
             val i =Intent(this,AgendaActivity::class.java)
             startActivity(i)
@@ -50,29 +55,41 @@ class MenuActivity : AppCompatActivity() {
         botonCerrarSesion.setOnClickListener{
 
             //creamos el alert Dialog
+
             val dialog=AlertDialog.Builder(this)
+
             //creamos el mensaje que aparecera
+
             dialog.setMessage("Quieres salir de GestShop ???")
+
             //si el dialog es cancelable
+
                 .setCancelable(false)
+
             //accion y texto del boton positivo
+
                 .setPositiveButton("SI",DialogInterface.OnClickListener{dialog,id->salir()})
+
             //texto y accion del boton negativo
+
                 .setNegativeButton("NO",DialogInterface.OnClickListener{dialog, id -> dialog.cancel()})
+
             //creamos la caja de dialogo
+
             val alert=dialog.create()
+
             //ponemos el titulo a la caja de dialogo
+
             alert.setTitle("CERRAR SESION")
+
             //mostrar
             alert.show()
         }
-
 
     }
     private fun salir() {
         FirebaseAuth.getInstance().signOut()
         finish()
     }
-
 
 }

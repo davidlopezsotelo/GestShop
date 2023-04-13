@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 
 class DiaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class DiaActivity : AppCompatActivity() {
         val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
 
-        // calendario
+        // calendario-------------------------------------------------------------------------------
         val etDate=findViewById<EditText>(R.id.etDate)
 
         etDate.setOnClickListener{
@@ -37,6 +38,10 @@ class DiaActivity : AppCompatActivity() {
             val i= Intent(this,MenuActivity::class.java)
             startActivity(i)
             finish()
+        }
+
+        botonResultado.setOnClickListener {
+            calcular()
         }
 
 
@@ -61,7 +66,32 @@ class DiaActivity : AppCompatActivity() {
 
         etDate.setText("Fecha: $dia/ $mes/ $year")
 
-
     }
 
-}
+    //calcular ----------------------------------------------------------------------------------
+
+    fun calcular(){
+
+        val textSaldo=findViewById<EditText>(R.id.editTextSaldo_caja)
+        val textIngresos=findViewById<EditText>(R.id.editTextIngresos)
+        val textGasto=findViewById<EditText>(R.id.editTextGastos)
+        val textResultado=findViewById<TextView>(R.id.textResultado)
+
+        var saldo=0.00
+        var ingresos=0.00
+        var gastos=0.00
+        var resultado=0.00
+
+
+        saldo= textSaldo.text.toString().toDouble()
+        ingresos= textIngresos.text.toString().toDouble()
+        gastos= textGasto.text.toString().toDouble()
+        resultado=saldo+ingresos-gastos
+
+        textResultado.setText(" "+resultado)
+    }
+
+
+
+
+}//Fin class
