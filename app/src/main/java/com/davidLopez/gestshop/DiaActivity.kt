@@ -28,7 +28,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
         // variables para definir botones
 
         val botonResultado=findViewById<Button>(R.id.buttonResultado)
-       // val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
 
         // calendario-------------------------------------------------------------------------------
@@ -49,38 +48,28 @@ class DiaActivity : AppCompatActivity() {//Fin class
             calcular()
         }
 
-        /*botonGuardar.setOnClickListener{
-            val i=Intent(this,GuardarActivity::class.java)
-            startActivity(i)
-            guardar()
+    } //fin setup
 
-        }*/
+    // CALENDARIO-----------------------------------------------------------------------------------
 
-
-
-    } //fin setup(
-
-    // CALENDARIO--------------------------------------------------------------------------
-
-    //Crear la clase DatePickerDialog________________>
+            //Crear la clase DatePickerDialog________________>
 
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
 
         val datePicker=DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
-    }
+    }//ff
 
-    //funcion que realizara cuando se seleccione el dia------------------------
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
 
-        etDate.setText("Fecha: $dia/ $mes/ $year")
+        etDate.setText( "  $dia/ $mes/ $year")
 
-    }
+    }//ff
 
-    //calcular ----------------------------------------------------------------------------------
+    // funcion para calcular -------------------------------------------------------------------------------------
 
     private fun calcular(){
 
@@ -89,12 +78,15 @@ class DiaActivity : AppCompatActivity() {//Fin class
         val textIngresos=findViewById<EditText>(R.id.editTextIngresos)
         val textGasto=findViewById<EditText>(R.id.editTextGastos)
         val textResultado=findViewById<TextView>(R.id.textResultado)
+        val textSaldoFinal=findViewById<TextView>(R.id.textNewSaldo)
+
         val fecha=textoFecha.text.toString()
 
         var saldo=0.00
         var ingresos=0.00
         var gastos=0.00
         var resultado=0.00
+        var saldoFin=0.00
 
 
         if (fecha.isNotEmpty()) {
@@ -102,50 +94,49 @@ class DiaActivity : AppCompatActivity() {//Fin class
             saldo = textSaldo.text.toString().toDouble()
             ingresos = textIngresos.text.toString().toDouble()
             gastos = textGasto.text.toString().toDouble()
-            resultado = (saldo + ingresos - gastos)
+            resultado = ( ingresos - gastos)
+            saldoFin=(saldo + resultado )
+
             //redondeamos a dos decimales:
             val df= DecimalFormat("#.##")
             df.roundingMode = RoundingMode.DOWN
-            val roundoff = df.format(resultado)
 
+            //enviamos los resultados a cada edit text:
+
+            val roundoff = df.format(resultado)
             textResultado.setText(" "+ roundoff)
 
+            val roundoff2=df.format(saldoFin)
+            textSaldoFinal.setText(" "+ roundoff2)
+
         }else{
-            Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Debes indicar la fecha.", Toast.LENGTH_SHORT).show()
         }
-
-
-
-        //Shared preference para conservar los datos al volver a la vista
-
-        //sobreescribir el metodo onPause() donde  se ejecutara el shared:
-
-
-
-
-
 
         val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
         botonGuardar.setOnClickListener{
 
-            if (fecha.isNotEmpty()) {
-                //guardamos los datos en un binding
+            if (fecha.isNotEmpty()) {//--------BINDING----------------------------------------------
+
+                //guardamos los datos en un binding y los pasamos a la activity guardar
+                //para validar los datos y pasarlos a la BD
+
                 val intent = Intent(this, GuardarActivity::class.java)
                 intent.putExtra("date", fecha)
                 intent.putExtra("saldo", saldo)
                 intent.putExtra("ingresos", ingresos)
                 intent.putExtra("gastos", gastos)
                 intent.putExtra("resultado", resultado)
+                intent.putExtra("Saldo final", saldoFin)
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
             }
         }
-
-    }
-
+    }//ff-------------------------------------------------------------------------------------------
 
 
 
 
-}
+
+}//fin class

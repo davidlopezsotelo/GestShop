@@ -22,6 +22,8 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical" >
 
+
+
             <TextView
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
@@ -32,6 +34,10 @@
                 android:textColor="#AA00FF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/textFecha"
@@ -46,7 +52,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/text_fecha"
@@ -58,7 +64,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/textSaldoInicial"
@@ -73,7 +79,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/text_saldo"
@@ -85,7 +91,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/textIngresos"
@@ -100,7 +106,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/text_ingresos"
@@ -112,7 +118,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/textGastos"
@@ -127,7 +133,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/text_gastos"
@@ -139,7 +145,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/textResultado"
@@ -154,7 +160,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:id="@+id/text_resultado"
@@ -166,7 +172,38 @@
 
             <Space
                 android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+
+            <TextView
+                android:id="@+id/textSaldoFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mia2"
+                android:text="SALDO FINAL: "
+                android:textAlignment="textStart"
+                android:textColor="#AA00FF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/text_saldoFinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="saldo Final"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <Space
+                android:layout_width="match_parent"
                 android:layout_height="20dp" />
+
+
+
 
             <Button
                 android:id="@+id/button_guardar_resultado"
@@ -180,7 +217,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/button_menu_resumen"

@@ -16,26 +16,19 @@ class GuardarActivity : AppCompatActivity() {
 
     private fun setup() {
 
-       /* val fecha=findViewById<TextView>(R.id.textFecha)
-        val saldoInicial=findViewById<TextView>(R.id.textSaldoInicial)
-        val ingresos=findViewById<TextView>(R.id.textIngresos)
-        val gastos=findViewById<TextView>(R.id.textGastos)
-        val resultado=findViewById<TextView>(R.id.textResultado)
-
-        */
         val botonGuardar=findViewById<Button>(R.id.button_guardar_resultado)
         val botonMenu=findViewById<Button>(R.id.button_menu_resumen)
 
 
         //introducir datos desde activity dia------------------------------------------------------
 
-        var datos=intent.extras
-
-        var fecha=datos!!.getString("date")
-        var saldo=datos.getDouble("saldo")
-        var ingresos=datos.getDouble("ingresos")
-        var gastos=datos.getDouble("gastos")
-        var resultado=datos.getDouble("resultado")
+        val datos=intent.extras
+        val fecha=datos!!.getString("date")
+        val saldo=datos.getDouble("saldo")
+        val ingresos=datos.getDouble("ingresos")
+        val gastos=datos.getDouble("gastos")
+        val resultado=datos.getDouble("resultado")
+        val saldoFinal=datos.getDouble("Saldo final")
 
         val valor_fecha=findViewById<TextView>(R.id.text_fecha) as TextView
         valor_fecha.text=(fecha)
@@ -47,9 +40,8 @@ class GuardarActivity : AppCompatActivity() {
         valor_gastos.text=(gastos.toString())
         val valor_resultado=findViewById<TextView>(R.id.text_resultado) as TextView
         valor_resultado.text=(resultado.toString())
-
-
-
+        val valor_saldoFinal=findViewById<TextView>(R.id.text_saldoFinal) as TextView
+        valor_saldoFinal.text=(saldoFinal.toString())
 
         //Guardamos datos en la base de datos
         botonGuardar.setOnClickListener{
