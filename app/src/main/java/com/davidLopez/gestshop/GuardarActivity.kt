@@ -1,8 +1,10 @@
 package com.davidLopez.gestshop
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -26,12 +28,15 @@ class GuardarActivity : AppCompatActivity() {
 
         val datos=intent.extras
 
-        val fecha=datos!!.getString("date")
+        var fecha=datos!!.getString("date")
         val saldo=datos.getDouble("saldo")
         val ingresos=datos.getDouble("ingresos")
         val gastos=datos.getDouble("gastos")
         val resultado=datos.getDouble("resultado")
         val saldoFinal=datos.getDouble("Saldo final")
+
+
+        //mostramos los datos en los texview correspondientes, haciendo los casting necesarios
 
         val valor_fecha=findViewById<TextView>(R.id.text_fecha)// as TextView
         valor_fecha.text= fecha.toString()
@@ -46,30 +51,29 @@ class GuardarActivity : AppCompatActivity() {
         val valor_saldoFinal=findViewById<TextView>(R.id.text_saldoFinal) //as TextView
         valor_saldoFinal.text=(saldoFinal.toString())
 
+
         //Guardamos datos en la base de datos-------------------------------------------------------
 
         botonGuardar.setOnClickListener{
 
-
-
+            // crear instancia en la base de datos
 
                 val db = FirebaseFirestore.getInstance()
 
-                db.collection("contabilidad").document().set(//cambiar fecha en document id
+            if ( fecha!= null) {
+                db.collection("contabilidad").document(fecha).set(
                     hashMapOf(
-
-                        "fecha" to fecha,
-                        "saldo inicial" to saldoInicial,
-                        "ingresos" to valor_ingresos,
-                        "gastos" to valor_gastos,
-                        "resultado" to valor_resultado,
-                        "saldo final" to valor_saldoFinal
+                        "saldo inicial" to saldo,
+                        "ingresos" to ingresos,
+                        "gastos" to gastos,
+                        "resultado" to resultado,
+                        "saldo final" to saldoFinal
                     )
                 )
-               // Toast.makeText(this,"DAtos guardados.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "ENTRADA GUARDADA", Toast.LENGTH_SHORT).show()
+            }else Toast.makeText(this,"ERROR AL GUARDAR LOS DATOS",Toast.LENGTH_SHORT)
 
             }
-
 
         botonMenu.setOnClickListener{
             val i=Intent(this,MenuActivity::class.java)

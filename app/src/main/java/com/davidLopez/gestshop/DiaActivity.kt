@@ -13,6 +13,7 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
+import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,11 +62,13 @@ class DiaActivity : AppCompatActivity() {//Fin class
         datePicker.show(supportFragmentManager,"datePicker")
     }//ff
 
+
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
 
-        etDate.setText( "  $dia- $mes- $year")
+        etDate.setText( " $dia- $mes- $year")
+
 
     }//ff
 
@@ -105,7 +108,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
             val roundoff = df.format(resultado)
             textResultado.setText(" "+ roundoff)
-
+             //------------------------------------------------------------  REVISAR EL REDONDEO!!!!!!!!!!!!!!!!!!!!!!!!!!!
             val roundoff2=df.format(saldoFin)
             textSaldoFinal.setText(" "+ roundoff2)
 
@@ -122,6 +125,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 //para validar los datos y pasarlos a la BD
 
                 val intent = Intent(this, GuardarActivity::class.java)
+
                 intent.putExtra("date", fecha)
                 intent.putExtra("saldo", saldo)
                 intent.putExtra("ingresos", ingresos)
