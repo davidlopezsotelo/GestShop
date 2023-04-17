@@ -65,7 +65,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
         val etDate=findViewById<EditText>(R.id.etDate)
 
-        etDate.setText( "  $dia/ $mes/ $year")
+        etDate.setText( "  $dia- $mes- $year")
 
     }//ff
 
