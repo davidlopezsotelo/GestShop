@@ -60,6 +60,8 @@ class GuardarActivity : AppCompatActivity() {
 
                 val db = FirebaseFirestore.getInstance()
 
+
+
             if ( fecha!= null) {
                 db.collection("contabilidad").document(fecha).set(
                     hashMapOf(

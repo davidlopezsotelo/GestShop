@@ -1,8 +1,6 @@
 package com.davidLopez.gestshop
 
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,9 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
-import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -32,8 +32,12 @@ class DatePickerFragment (val listener: (dia:Int,mes:Int,year:Int)->Unit):Dialog
     }
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 
-
         listener(dayOfMonth,month+1,year)//se añade +1 en el mes porque los meses empiezan en 0
+
     }
+
+
+
+
 
 }
