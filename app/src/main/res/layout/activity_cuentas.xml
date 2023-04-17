@@ -3,38 +3,216 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".CuentasActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="41dp"
-        android:fontFamily="@font/mia2"
-        android:text="CUENTAS"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.4">
 
-    <Button
-        android:id="@+id/buttonMenuCuentas"
-        style="@style/botonVerde"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
-        android:text="MENU"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80E4DAC6"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
 
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mia2"
+                android:text="RESUMEN DE CONTABILIDAD"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="374dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/mia3"
+                android:hint="Selecciona Fecha"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="ExtraText">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewFecha"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="FECHA" />
+
+                    <TextView
+                        android:id="@+id/textViewIngresos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="INGRESOS" />
+
+                    <TextView
+                        android:id="@+id/textViewGastos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="GASTOS" />
+
+                    <TextView
+                        android:id="@+id/textViewResultado"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="RESULTADO" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etFecha"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:hint="Fecha" />
+
+                    <EditText
+                        android:id="@+id/etIngresos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:hint="Ingresos" />
+
+                    <EditText
+                        android:id="@+id/etGastos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:hint="gastos" />
+
+                    <EditText
+                        android:id="@+id/etTotal"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="total" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewFecha2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="FECHA" />
+
+                    <TextView
+                        android:id="@+id/textViewIngresos2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="INGRESOS" />
+
+                    <TextView
+                        android:id="@+id/textViewGastos2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="GASTOS" />
+
+                    <TextView
+                        android:id="@+id/textViewResultado2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:text="RESULTADO" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etFecha2"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="total" />
+
+                    <EditText
+                        android:id="@+id/etIngresos2"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="total" />
+
+                    <EditText
+                        android:id="@+id/etGastos2"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="total" />
+
+                    <EditText
+                        android:id="@+id/etTotal2"
+                        android:background="@drawable/estilo_bordes_fino"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="total" />
+                </TableRow>
+
+            </TableLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

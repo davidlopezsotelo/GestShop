@@ -15,13 +15,6 @@ class CuentasActivity : AppCompatActivity() {
 
     private fun setup() {
 
-        val botonMenu=findViewById<Button>(R.id.buttonMenuCuentas)
 
-
-        botonMenu.setOnClickListener{
-            val i= Intent(this,MenuActivity::class.java)
-            startActivity(i)
-            finish()
-        }
     }
 }
