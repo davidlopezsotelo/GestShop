@@ -39,5 +39,4 @@ class DatePickerFragment (val listener: (dia:Int,mes:Int,year:Int)->Unit):Dialog
 
 
 
-
 }

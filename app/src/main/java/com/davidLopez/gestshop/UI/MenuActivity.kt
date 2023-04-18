@@ -1,4 +1,4 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.UI
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.*
 import com.google.firebase.auth.FirebaseAuth
 
 class MenuActivity : AppCompatActivity() {
@@ -28,27 +29,27 @@ class MenuActivity : AppCompatActivity() {
         val botonArchivos=findViewById<Button>(R.id.button_archivos)
 
         botonAbrirdia.setOnClickListener{
-            val i =Intent(this,DiaActivity::class.java)
+            val i =Intent(this, DiaActivity::class.java)
             startActivity(i)
         }
 
         botonCuentas.setOnClickListener{
-            val i =Intent(this,CuentasActivity::class.java)
+            val i =Intent(this, CuentasActivity::class.java)
             startActivity(i)
         }
 
         botonPedidos.setOnClickListener{
-            val i =Intent(this,PedidosActivity::class.java)
+            val i =Intent(this, PedidosActivity::class.java)
             startActivity(i)
         }
 
         botonArchivos.setOnClickListener{
-            val i=Intent(this,ArchivoActivity::class.java)
+            val i=Intent(this, ArchivoActivity::class.java)
             startActivity(i)
         }
 
         botonAgenda.setOnClickListener{
-            val i =Intent(this,AgendaActivity::class.java)
+            val i =Intent(this, AgendaActivity::class.java)
             startActivity(i)
         }
 

@@ -1,4 +1,4 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.davidLopez.gestshop.DatePickerFragment
+import com.davidLopez.gestshop.R
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +38,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
 
         botonMenu.setOnClickListener{
-            val i= Intent(this,MenuActivity::class.java)
+            val i= Intent(this, MenuActivity::class.java)
             startActivity(i)
             finish()
         }
@@ -53,7 +56,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
 
-        val datePicker=DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
+        val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
     }//ff
 
@@ -61,11 +64,11 @@ class DiaActivity : AppCompatActivity() {//Fin class
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
-
         etDate.setText( " $dia- $mes- $year")
 
 
     }//ff
+
 
     // funcion para calcular -------------------------------------------------------------------------------------
 
@@ -119,6 +122,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 //guardamos los datos en un binding y los pasamos a la activity guardar
                 //para validar los datos y pasarlos a la BD
 
+
                 val intent = Intent(this, GuardarActivity::class.java)
 
                 intent.putExtra("date", fecha)
@@ -133,8 +137,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
             }
         }
     }//ff-------------------------------------------------------------------------------------------
-
-
 
 
 

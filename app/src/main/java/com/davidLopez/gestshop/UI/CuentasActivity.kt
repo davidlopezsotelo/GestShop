@@ -1,10 +1,12 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.davidLopez.gestshop.DatePickerFragment
+import com.davidLopez.gestshop.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CuentasActivity : AppCompatActivity() {
@@ -54,7 +56,7 @@ class CuentasActivity : AppCompatActivity() {
 
     private fun showDatePickerDialog() {
 
-        val datePicker=DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
+        val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
 
 
