@@ -1,5 +1,6 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.UI
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Insert
+import com.davidLopez.gestshop.BaseDatos.DaoBalance
+import com.davidLopez.gestshop.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GuardarActivity : AppCompatActivity() {
@@ -18,6 +22,7 @@ class GuardarActivity : AppCompatActivity() {
         setup()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun setup() {
 
         val botonGuardar=findViewById<Button>(R.id.button_guardar_resultado)
@@ -28,7 +33,7 @@ class GuardarActivity : AppCompatActivity() {
 
         val datos=intent.extras
 
-        var fecha=datos!!.getString("date")
+        val fecha=datos!!.getString("date")
         val saldo=datos.getDouble("saldo")
         val ingresos=datos.getDouble("ingresos")
         val gastos=datos.getDouble("gastos")
@@ -55,32 +60,30 @@ class GuardarActivity : AppCompatActivity() {
         //Guardamos datos en la base de datos-------------------------------------------------------
 
         botonGuardar.setOnClickListener{
+            //guardar datos en room database
+            guargar()
+        }
 
-            // crear instancia en la base de datos
-
-                val db = FirebaseFirestore.getInstance()
-
-
-
-            if ( fecha!= null) {
-                db.collection("contabilidad").document(fecha).set(
-                    hashMapOf(
-                        "saldo inicial" to saldo,
-                        "ingresos" to ingresos,
-                        "gastos" to gastos,
-                        "resultado" to resultado,
-                        "saldo final" to saldoFinal
-                    )
-                )
-                Toast.makeText(this, "ENTRADA GUARDADA", Toast.LENGTH_SHORT).show()
-            }else Toast.makeText(this,"ERROR AL GUARDAR LOS DATOS",Toast.LENGTH_SHORT)
-
-            }
 
         botonMenu.setOnClickListener{
-            val i=Intent(this,MenuActivity::class.java)
+            val i=Intent(this, MenuActivity::class.java)
             startActivity(i)
             finish()
         }
     }
+
+    private fun guargar() {
+
+        val datos=intent.extras
+
+        val fecha= datos?.getLong("date")
+        val ingresos= datos?.getDouble("ingresos")
+        val gastos= datos?.getDouble("gastos")
+        val resultado= datos?.getDouble("resultado")
+
+
+    }
+
+
+
 }

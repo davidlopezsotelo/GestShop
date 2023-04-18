@@ -1,23 +1,20 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.Log
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.UI.MenuActivity
+import com.davidLopez.gestshop.R
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
@@ -52,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         BotonRegistro.setOnClickListener{
-            val j=Intent(this,RegistroActivity::class.java)
+            val j=Intent(this, RegistroActivity::class.java)
             startActivity(j)
             finish()
         }
@@ -89,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful){
                     val user=auth.currentUser
                     Toast.makeText(this,"Te has identificado correctAamente.",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,MenuActivity::class.java))
+                    startActivity(Intent(this, MenuActivity::class.java))
                     finish()
                 }else{
                     Toast.makeText(this,"Registro fallido.",Toast.LENGTH_SHORT).show()
