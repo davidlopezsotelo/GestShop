@@ -43,7 +43,7 @@
                 android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="24dp"
-                android:text="CONTABILIDAD"
+                android:text="INFORMES"
                 android:textSize="26sp"
                 app:cornerRadius="30dp" />
 

@@ -29,11 +29,18 @@ class GuardarActivity : AppCompatActivity() {
         val datos=intent.extras
 
         var fecha=datos!!.getString("date")
-        val saldo=datos.getDouble("saldo")
-        val ingresos=datos.getDouble("ingresos")
-        val gastos=datos.getDouble("gastos")
-        val resultado=datos.getDouble("resultado")
-        val saldoFinal=datos.getDouble("Saldo final")
+        val saldo=datos.getDouble("saldo").toString()
+        val ingresos=datos.getDouble("ingresos").toString()
+        val gastos=datos.getDouble("gastos").toString()
+        val resultado=datos.getDouble("resultado").toString()
+        val saldoFinal=datos.getDouble("Saldo final").toString()
+
+        val dia=datos.getInt("miDia")
+        val mes=datos.getInt("miMes")
+        val year=datos.getInt("miYear")
+
+
+
 
 
         //mostramos los datos en los texview correspondientes, haciendo los casting necesarios
@@ -58,16 +65,24 @@ class GuardarActivity : AppCompatActivity() {
 
             // crear instancia en la base de datos
 
-                val db = FirebaseFirestore.getInstance()
+            val db = FirebaseFirestore.getInstance()
 
             if ( fecha!= null) {
                 db.collection("contabilidad").document(fecha).set(
                     hashMapOf(
+
+                        "fecha" to fecha,
                         "saldo inicial" to saldo,
                         "ingresos" to ingresos,
                         "gastos" to gastos,
                         "resultado" to resultado,
-                        "saldo final" to saldoFinal
+                        "saldo final" to saldoFinal,
+
+                        "dia " to dia,
+                        "mes" to mes,
+                        "año" to year
+
+
                     )
                 )
                 Toast.makeText(this, "ENTRADA GUARDADA", Toast.LENGTH_SHORT).show()

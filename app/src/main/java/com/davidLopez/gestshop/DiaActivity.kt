@@ -16,12 +16,17 @@ import kotlin.math.roundToLong
 import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dia)
 
         setup()
     }
+    var miDia = 1
+    var miMes=1
+    var miYear=1
 
 
     private fun setup(){
@@ -30,6 +35,8 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
         val botonResultado=findViewById<Button>(R.id.buttonResultado)
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
+
+
 
         // calendario-------------------------------------------------------------------------------
         val etDate=findViewById<EditText>(R.id.etDate)
@@ -66,9 +73,11 @@ class DiaActivity : AppCompatActivity() {//Fin class
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
+         miDia=dia
+         miMes=mes
+         miYear=year
 
         etDate.setText( " $dia- $mes- $year")
-
 
     }//ff
 
@@ -117,6 +126,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
         }
 
         val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
+
         botonGuardar.setOnClickListener{
 
             if (fecha.isNotEmpty()) {//--------BINDING----------------------------------------------
@@ -132,6 +142,11 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 intent.putExtra("gastos", gastos)
                 intent.putExtra("resultado", resultado)
                 intent.putExtra("Saldo final", saldoFin)
+//*******************************************************************************
+                intent.putExtra("miDia", miDia)
+                intent.putExtra("miMes", miMes)
+                intent.putExtra("miYear", miYear)
+
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()

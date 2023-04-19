@@ -21,7 +21,7 @@ class MenuActivity : AppCompatActivity() {
         //botones-----------------------------------------------------------------------------------
 
         val botonAbrirdia=findViewById<Button>(R.id.button_abrirdia)
-        val botonCuentas=findViewById<Button>(R.id.button_cuentas)
+        val botonInformes=findViewById<Button>(R.id.button_cuentas)
         val botonPedidos=findViewById<Button>(R.id.button_pedidos)
         val botonAgenda=findViewById<Button>(R.id.button_agenda)
         val botonCerrarSesion=findViewById<Button>(R.id.button_cerrarSesion)
@@ -32,8 +32,8 @@ class MenuActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        botonCuentas.setOnClickListener{
-            val i =Intent(this,CuentasActivity::class.java)
+        botonInformes.setOnClickListener{
+            val i =Intent(this,InformesActivity::class.java)
             startActivity(i)
         }
 

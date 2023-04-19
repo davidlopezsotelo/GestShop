@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CuentasActivity">
+    tools:context=".InformesActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
             <EditText
-                android:id="@+id/etDate"
+                android:id="@+id/etDate_info"
                 android:layout_width="374dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -154,7 +154,7 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20dp" />
-                <TextView
+                <EditText
                     android:id="@+id/movYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
