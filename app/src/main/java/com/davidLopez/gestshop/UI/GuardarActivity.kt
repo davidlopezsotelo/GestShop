@@ -1,18 +1,12 @@
 package com.davidLopez.gestshop.UI
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.room.Insert
-import com.davidLopez.gestshop.BaseDatos.DaoBalance
+import androidx.appcompat.app.AppCompatActivity
 import com.davidLopez.gestshop.R
-import com.google.firebase.firestore.FirebaseFirestore
 
 class GuardarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +54,7 @@ class GuardarActivity : AppCompatActivity() {
         //Guardamos datos en la base de datos-------------------------------------------------------
 
         botonGuardar.setOnClickListener{
-            //guardar datos en room database
+            //guardar datos en room database*******************************************************
             guargar()
         }
 
@@ -80,9 +74,16 @@ class GuardarActivity : AppCompatActivity() {
         val ingresos= datos?.getDouble("ingresos")
         val gastos= datos?.getDouble("gastos")
         val resultado= datos?.getDouble("resultado")
-
-
+//----------------------------***********************----------------------------------------------
+        /*
+        introducir en room
+         */
+        val dia= datos?.getInt("dia")
+        val mes= datos?.getInt("mes")
+        val anio= datos?.getInt("anio")
     }
+
+
 
 
 }

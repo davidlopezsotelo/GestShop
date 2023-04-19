@@ -21,13 +21,13 @@ class DiaActivity : AppCompatActivity() {//Fin class
         setup()
     }
 
-
     private fun setup(){
 
         // variables para definir botones
 
         val botonResultado=findViewById<Button>(R.id.buttonResultado)
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
+
 
         // calendario-------------------------------------------------------------------------------
         val etDate=findViewById<EditText>(R.id.etDate)
@@ -55,19 +55,35 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
-
         val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
-    }//ff
 
+
+    }//ff
 
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
         etDate.setText( " $dia- $mes- $year")
+//----------------------------------------------------------------provar****************************
+        val Dia= dia
+        val Mes=mes
+        val Anio=year
+/*
+enviar datos  a guardar activity********************************************************************
+ */
+        val intent = Intent(this, GuardarActivity::class.java)
+        intent.putExtra("dia" , Dia)
+        intent.putExtra ("mes" , Mes)
+        intent.putExtra("anio" , Anio)
+
+        startActivity(intent)
 
 
     }//ff
+
+    //---------------------------------------------------------------------------------------
+
 
 
     // funcion para calcular -------------------------------------------------------------------------------------
@@ -122,7 +138,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 //guardamos los datos en un binding y los pasamos a la activity guardar
                 //para validar los datos y pasarlos a la BD
 
-
                 val intent = Intent(this, GuardarActivity::class.java)
 
                 intent.putExtra("date", fecha)
@@ -139,5 +154,5 @@ class DiaActivity : AppCompatActivity() {//Fin class
     }//ff-------------------------------------------------------------------------------------------
 
 
-//¿???
+//
 }//fin class

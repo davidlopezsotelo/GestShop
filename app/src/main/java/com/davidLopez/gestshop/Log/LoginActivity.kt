@@ -38,8 +38,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setup() {
 
-
-
         val BotonEntrar= findViewById<Button>(R.id.button_entrar)
         val BotonRegistro=findViewById<Button>(R.id.buttonRegistroLog)
 
