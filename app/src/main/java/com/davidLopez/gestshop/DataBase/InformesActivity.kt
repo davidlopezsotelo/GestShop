@@ -1,9 +1,11 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.DataBase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
+import com.davidLopez.gestshop.DatePickerFragment
+import com.davidLopez.gestshop.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -42,7 +44,7 @@ class InformesActivity : AppCompatActivity() {
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
 
-        val datePicker=DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
+        val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
     }//ff
 

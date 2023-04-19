@@ -1,13 +1,13 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.DataBase
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.davidLopez.gestshop.R
+import com.davidLopez.gestshop.UI.MenuActivity
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GuardarActivity : AppCompatActivity() {
@@ -91,7 +91,7 @@ class GuardarActivity : AppCompatActivity() {
             }
 
         botonMenu.setOnClickListener{
-            val i=Intent(this,MenuActivity::class.java)
+            val i=Intent(this, MenuActivity::class.java)
             startActivity(i)
             finish()
         }

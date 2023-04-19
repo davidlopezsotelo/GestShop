@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.Login.LoginActivity
+import com.davidLopez.gestshop.Login.RegistroActivity
+import com.davidLopez.gestshop.UI.MenuActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
@@ -48,7 +51,7 @@ class InicioActivity : AppCompatActivity() {
         }
 
         botonRegistro.setOnClickListener{
-            val i=Intent(this,RegistroActivity::class.java)
+            val i=Intent(this, RegistroActivity::class.java)
             startActivity(i)
 
         }
@@ -87,11 +90,11 @@ class InicioActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
         if (user != null) {
             // User is signed in
-            startActivity(Intent(this,MenuActivity::class.java))
+            startActivity(Intent(this, MenuActivity::class.java))
             finish()
         } else {
             // No user is signed in
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

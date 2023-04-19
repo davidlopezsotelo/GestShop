@@ -12,37 +12,37 @@
         android:theme="@style/Theme.GestShop"
         tools:targetApi="31">
         <activity
-            android:name=".GuardarActivity"
+            android:name=".DataBase.GuardarActivity"
             android:exported="false" />
         <activity
-            android:name=".ArchivoActivity"
+            android:name=".UI.ArchivoActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistroActivity"
+            android:name=".Login.RegistroActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AgendaActivity"
+            android:name=".UI.AgendaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PedidosActivity"
+            android:name=".UI.PedidosActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".InformesActivity"
+            android:name=".DataBase.InformesActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DiaActivity"
+            android:name=".UI.DiaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".UI.MenuActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

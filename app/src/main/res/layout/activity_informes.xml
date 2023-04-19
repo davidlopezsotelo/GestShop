@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".InformesActivity">
+    tools:context=".DataBase.InformesActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20dp" />
-                <EditText
+                <TextView
                     android:id="@+id/movYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

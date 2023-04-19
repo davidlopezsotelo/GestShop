@@ -1,19 +1,17 @@
-package com.davidLopez.gestshop
+package com.davidLopez.gestshop.UI
 
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.davidLopez.gestshop.DatePickerFragment
+import com.davidLopez.gestshop.DataBase.GuardarActivity
+import com.davidLopez.gestshop.R
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
-import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
 
@@ -47,7 +45,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
 
         botonMenu.setOnClickListener{
-            val i= Intent(this,MenuActivity::class.java)
+            val i= Intent(this, MenuActivity::class.java)
             startActivity(i)
             finish()
         }
@@ -65,7 +63,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
 
-        val datePicker=DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
+        val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
     }//ff
 
