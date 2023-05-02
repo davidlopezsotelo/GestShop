@@ -16,13 +16,14 @@ interface DaoBalance {
     @Query("SELECT * FROM Balances ORDER BY fecha ASC")
      fun getAllDatos():List<Balances>
 
-     @Query("Select fecha from balances")
+     @Query("Select fecha from balances ORDER BY fecha ASC")
+     fun getDatosFecha():List<Balances>
 
      @Insert()
-     fun insert(balance:List<Balances>)
+     fun insertDia(balance:Balances)
 
      @Delete()
-     fun borrar(balance: List<Balances>)
+     fun borrarDia(balance: Balances)
 
 
 
