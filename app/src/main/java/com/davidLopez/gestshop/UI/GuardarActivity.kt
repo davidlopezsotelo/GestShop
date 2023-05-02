@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Database
 import androidx.room.Room
+import com.davidLopez.gestshop.BaseDatos.Balances
 import com.davidLopez.gestshop.R
 
 class GuardarActivity : AppCompatActivity() {
@@ -84,9 +85,11 @@ class GuardarActivity : AppCompatActivity() {
         val mes= datos?.getInt("mes")
         val anio= datos?.getInt("anio")
 
-        val room=Room.databaseBuilder(this,com.davidLopez.gestshop.BaseDatos.Database::class.java,"DatosDia").build()
+        val room=Room.databaseBuilder(applicationContext,com.davidLopez.gestshop.BaseDatos.Database::class.java,"Database").build()
 
-        TODO()
+        val balanceDao=room.getDaoBalance()
+        val balance: List<Balances> = balanceDao.getAllDatos()
+        TODO()//////////////////////////////////////////////////////
     }
 
 
