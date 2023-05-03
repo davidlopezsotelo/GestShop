@@ -13,11 +13,13 @@ El siguiente código define un DAO llamado .
 @Dao
 interface DaoBalance {
 
-    @Query("SELECT * FROM Balances ORDER BY fecha ASC")
-     fun getAllDatos():List<Balances>
 
-     @Query("Select fecha from balances ORDER BY fecha ASC")
-     fun getDatosFecha():List<Balances>
+     @Query("Select * from balances WHERE anio LIKE :anio AND mes LIKE:mes ORDER BY dia ASC")
+     fun getDatosFecha(anio:Int,mes:Int):Balances
+     //TODO()
+     /*
+     SEGUIR DESDE AQUI PARA MOSTRAR LOS DATOS POR PANTALLA
+      */
 
      @Insert()
      fun insertDia(balance:Balances)

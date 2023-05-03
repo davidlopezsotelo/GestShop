@@ -89,7 +89,8 @@ class GuardarActivity : AppCompatActivity() {
 
         val balanceDao=room.getDaoBalance()
         val balance: List<Balances> = balanceDao.getAllDatos()
-        TODO()//////////////////////////////////////////////////////
+
+
     }
 
 
