@@ -15,16 +15,15 @@ import java.text.DecimalFormat
 
 class DiaActivity : AppCompatActivity() {//Fin class
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dia)
 
         setup()
     }
-    var miDia = 1
-    var miMes=1
-    var miYear=1
+    var miDia = 0
+    var miMes=0
+    var miYear=0
 
 
     private fun setup(){
@@ -35,14 +34,12 @@ class DiaActivity : AppCompatActivity() {//Fin class
         val botonMenu=findViewById<Button>(R.id.buttonMenu)
 
 
-
         // calendario-------------------------------------------------------------------------------
         val etDate=findViewById<EditText>(R.id.etDate)
 
         etDate.setOnClickListener{
             showDatePickerDialog()//crear la funcion!!!!!!
         }
-
 
         botonMenu.setOnClickListener{
             val i= Intent(this, MenuActivity::class.java)
@@ -53,8 +50,8 @@ class DiaActivity : AppCompatActivity() {//Fin class
         botonResultado.setOnClickListener {
             calcular()
         }
-
     } //fin setup
+
 
     // CALENDARIO-----------------------------------------------------------------------------------
 
@@ -66,6 +63,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
         val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager,"datePicker")
     }//ff
+
 
 
     fun onDateSelected(dia:Int,mes:Int,year:Int){
@@ -123,6 +121,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
             Toast.makeText(this,"Debes indicar la fecha.", Toast.LENGTH_SHORT).show()
         }
 
+
         val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
 
         botonGuardar.setOnClickListener{
@@ -151,9 +150,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
             }
         }
     }//ff-------------------------------------------------------------------------------------------
-
-
-
 
 
 }//fin class

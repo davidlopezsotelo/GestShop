@@ -71,6 +71,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
+            <TextView
+                android:id="@+id/textResum"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:text="RESUMEN" />
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -86,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/estilo_bordes_fino"
-                        android:text="FECHA" />
+                        android:text="DIA" />
 
                     <TextView
                         android:id="@+id/textViewIngresos"
@@ -118,7 +124,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/etFecha"
+                        android:id="@+id/etDia"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -180,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/estilo_bordes_fino"
-                        android:text="FECHA" />
+                        android:text="MES" />
 
                     <TextView
                         android:id="@+id/textViewIngresos2"
@@ -213,14 +219,14 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/etTotal2"
+                        android:id="@+id/etMesAnio"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/estilo_bordes_fino" />
 
                     <TextView
-                        android:id="@+id/etFecha2"
+                        android:id="@+id/etIngresosAnio"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -234,7 +240,7 @@
                         android:background="@drawable/estilo_bordes_fino" />
 
                     <TextView
-                        android:id="@+id/etIngresos2"
+                        android:id="@+id/etTotalAnio"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

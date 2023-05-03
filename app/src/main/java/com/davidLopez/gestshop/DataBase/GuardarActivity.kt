@@ -24,7 +24,7 @@ class GuardarActivity : AppCompatActivity() {
         val botonMenu=findViewById<Button>(R.id.button_menu_resumen)
 
 
-        //introducir datos desde activity dia------------------------------------------------------
+        //introducir datos desde obtenidos desde activity dia------------------------------------------------------
 
         val datos=intent.extras
 
@@ -41,54 +41,47 @@ class GuardarActivity : AppCompatActivity() {
 
 
 
-
-
         //mostramos los datos en los texview correspondientes, haciendo los casting necesarios
 
-        val valor_fecha=findViewById<TextView>(R.id.text_fecha)// as TextView
+        val valor_fecha=findViewById<TextView>(R.id.text_fecha)
         valor_fecha.text= fecha.toString()
-        val saldoInicial=findViewById<TextView>(R.id.text_saldo) //as TextView
-        saldoInicial.text=(saldo.toString())
-        val valor_ingresos=findViewById<TextView>(R.id.text_ingresos) //as TextView
-        valor_ingresos.text=(ingresos.toString())
-        val valor_gastos=findViewById<TextView>(R.id.text_gastos)// as TextView
-        valor_gastos.text=(gastos.toString())
-        val valor_resultado=findViewById<TextView>(R.id.text_resultado) //as TextView
-        valor_resultado.text=(resultado.toString())
-        val valor_saldoFinal=findViewById<TextView>(R.id.text_saldoFinal) //as TextView
-        valor_saldoFinal.text=(saldoFinal.toString())
+        val saldoInicial=findViewById<TextView>(R.id.text_saldo)
+        saldoInicial.text=saldo
+        val valor_ingresos=findViewById<TextView>(R.id.text_ingresos)
+        valor_ingresos.text=ingresos
+        val valor_gastos=findViewById<TextView>(R.id.text_gastos)
+        valor_gastos.text=gastos
+        val valor_resultado=findViewById<TextView>(R.id.text_resultado)
+        valor_resultado.text=resultado
+        val valor_saldoFinal=findViewById<TextView>(R.id.text_saldoFinal)
+        valor_saldoFinal.text=saldoFinal
 
-
-        //Guardamos datos en la base de datos-------------------------------------------------------
+//Guardamos datos en la base de datos------------------------------------------------------------------------------------
 
         botonGuardar.setOnClickListener{
-
             // crear instancia en la base de datos
-
             val db = FirebaseFirestore.getInstance()
 
             if ( fecha!= null) {
                 db.collection("contabilidad").document(fecha).set(
                     hashMapOf(
-
                         "fecha" to fecha,
                         "saldo inicial" to saldo,
                         "ingresos" to ingresos,
                         "gastos" to gastos,
                         "resultado" to resultado,
                         "saldo final" to saldoFinal,
-
                         "dia " to dia,
                         "mes" to mes,
                         "año" to year
-
-
                     )
                 )
                 Toast.makeText(this, "ENTRADA GUARDADA", Toast.LENGTH_SHORT).show()
-            }else Toast.makeText(this,"ERROR AL GUARDAR LOS DATOS",Toast.LENGTH_SHORT)
+            }else Toast.makeText(this,"ERROR AL GUARDAR LOS DATOS",Toast.LENGTH_SHORT).show()
 
-            }
+            }//fin boton------------------------------------------------------------------------------------
+
+
 
         botonMenu.setOnClickListener{
             val i=Intent(this, MenuActivity::class.java)
