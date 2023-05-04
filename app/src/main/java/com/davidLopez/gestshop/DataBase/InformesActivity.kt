@@ -5,7 +5,9 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.TextView
 import com.davidLopez.gestshop.DatePickerFragment
 import com.davidLopez.gestshop.R
@@ -15,11 +17,11 @@ import com.google.firebase.ktx.Firebase
 
 class InformesActivity : AppCompatActivity() {
 
-    val db=Firebase.firestore
+    val db = Firebase.firestore
 
     var miDia = 0
-    var miMes=0
-    var miYear=0
+    var miMes = 0
+    var miYear = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +33,9 @@ class InformesActivity : AppCompatActivity() {
     private fun setup() {
 
         // calendario--------------------------------------
-        val etDate=findViewById<EditText>(R.id.etDate_info)
+        val etDate = findViewById<EditText>(R.id.etDate_info)
 
-        etDate.setOnClickListener{
+        etDate.setOnClickListener {
             showDatePickerDialog()//crear la funcion!!!!!!
         }
 
@@ -44,20 +46,20 @@ class InformesActivity : AppCompatActivity() {
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
 
-        val datePicker= DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
-        datePicker.show(supportFragmentManager,"datePicker")
+        val datePicker = DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
+        datePicker.show(supportFragmentManager, "datePicker")
     }//ff
 
 // funcion que selecciona fecha
 
-    fun onDateSelected(dia:Int, mes:Int, year:Int){
+    fun onDateSelected(dia: Int, mes: Int, year: Int) {
 
-        val etDate=findViewById<EditText>(R.id.etDate_info)
-        miDia=dia
-        miMes=mes
-        miYear=year
+        val etDate = findViewById<EditText>(R.id.etDate_info)
+        miDia = dia
+        miMes = mes
+        miYear = year
 
-        etDate.setText( " $dia- $mes- $year")
+        etDate.setText(" $dia- $mes- $year")
 
         muestraMes()
         muestraAnio()
@@ -82,23 +84,81 @@ class InformesActivity : AppCompatActivity() {
             9 -> nombreMes.text = "TOTAL MOVIMIENTOS MES: SEPTIEMBRE"
             10 -> nombreMes.text = "TOTAL MOVIMIENTOS MES: OCTUBRE"
             11 -> nombreMes.text = "TOTAL MOVIMIENTOS MES: NOVIEMBRE"
-            12 -> nombreMes.text=("TOTAL MOVIMIENTOS MES: DICIEMBRE")
+            12 -> nombreMes.text = "TOTAL MOVIMIENTOS MES: DICIEMBRE"
         }
     }
 
-    fun informeMes(){
+    fun informeMes() {
 
-        val etDate=findViewById<EditText>(R.id.etDate_info)
-        val etFecha=findViewById<TextView>(R.id.etDia)
-        val etIngresos=findViewById<TextView>(R.id.etIngresos)
-        val etGastos=findViewById<TextView>(R.id.etGastos)
-        val etTotal =findViewById<TextView>(R.id.etTotal)
+        val etDate = findViewById<EditText>(R.id.etDate_info)
+        val etFecha = findViewById<ListView>(R.id.etDia)
+        val etIngresos = findViewById<TextView>(R.id.etIngresos)
+        val etGastos = findViewById<TextView>(R.id.etGastos)
+        val etTotal = findViewById<TextView>(R.id.etTotal)
 
-        var fecha=etDate.text.toString()
+        var fecha = etDate.text.toString()
 
+
+        val informeDia = db.collection("contabilidad").whereEqualTo("mes", miMes)
+        informeDia.get().addOnSuccessListener { resultado ->
+            var arraydia = ArrayList<String>()
+
+            for (documento in resultado) {
+               arraydia.add(documento["dia"].toString())
+//TODO
+            }
+            val arrayAdapter:ArrayAdapter<*>
+
+            arrayAdapter=ArrayAdapter(this,
+                android.R.layout.simple_list_item_1,arraydia)
+
+            etFecha.adapter = arrayAdapter
+        }
+
+
+        val informeIngresos = db.collection("contabilidad").whereEqualTo("mes", miMes)
+        informeIngresos.get().addOnSuccessListener { resultado ->
+            var ingresos = ArrayList<String>()
+            for (documento in resultado) {
+                ingresos.add( documento["ingresos"].toString())
+
+            }
+            val arrayAdapter:ArrayAdapter<String>
+
+            arrayAdapter=ArrayAdapter(this,
+                android.R.layout.simple_list_item_1,ingresos)
+
+            etIngresos.text= arrayAdapter.toString()//cambiar
+
+        }
+
+
+
+           // etIngresos.text = ingresos.toString()
+
+
+
+        val informeGastos = db.collection("contabilidad").whereEqualTo("mes", miMes)
+        informeGastos.get().addOnSuccessListener { resultado ->
+            var gastos = ArrayList<String>()
+            for (documento in resultado) {
+                gastos.add(documento["gastos"].toString())
+            }
+            etGastos.text = gastos.toString()
+        }
+
+        val informeResultados = db.collection("contabilidad").whereEqualTo("mes", miMes)
+        informeResultados.get().addOnSuccessListener { resultado ->
+            var resultados = ArrayList<String>()
+            for (documento in resultado) {
+                resultados.add(documento["resultado"].toString())
+            }
+            etTotal.text = resultados.toString()
+        }
+    }
 
 //-----------------muestra solo la fecha seleccionada-------------------------------------
-/*
+    /*
         val infoMes=db.collection("contabilidad").document(fecha)
 
         infoMes.get().addOnSuccessListener {
@@ -106,12 +166,10 @@ class InformesActivity : AppCompatActivity() {
             etIngresos.text = it.get("ingresos")as String?
             etGastos.text = it.get("gastos")as String?
             etTotal.text = it.get("resultado")as String?
-
         }*/
+    // -----------------mostrat todas las entradas del mes seleccionad-------------
 
-        // -----------------mostrat todas las entradas del mes seleccionad-------------
-
-        val muetraMesTotal =db.collection("contabilidad").whereEqualTo("mes",miMes)
+    /*        val muetraMesTotal =db.collection("contabilidad").whereEqualTo("mes",miMes)
 
         val texREsumen=findViewById<TextView>(R.id.textResum)
 
@@ -122,40 +180,35 @@ class InformesActivity : AppCompatActivity() {
             datas += "${documento.id}: ${documento.data}\n"
             }
             texREsumen.text=datas
-        }
-
-        // desde aqui modificar ****************************************https://www.youtube.com/watch?v=fCFQ44pEv-o&list=PL0bfr51v6JJEh1xtggpg57wN6m5Us3cb1&index=59
+        }*/
 
 
+    // hacer selec en la base de datos sobre el mes seleccionado y
+    //  guardar los datos en un array o list
+
+    // bucle for que recorre los dias del mes (array)
+    // y los pinta en los texview de forma dinamica
 
 
-
-        // hacer selec en la base de datos sobre el mes seleccionado y
-        //  guardar los datos en un array o list
-
-                // bucle for que recorre los dias del mes (array)
-                // y los pinta en los texview de forma dinamica
-    }
-
-    fun muestraAnio(){ //
-        val anio=findViewById<TextView>(R.id.movYear)
+    fun muestraAnio() { //
+        val anio = findViewById<TextView>(R.id.movYear)
 
         anio.text = "TOTAL MOVIMIENTOS AÑO: $miYear"
     }
 
 
-    fun informeAnio(){
+    fun informeAnio() {
 
-        val etDate=findViewById<EditText>(R.id.etDate_info)
-        val etFecha=findViewById<TextView>(R.id.etMesAnio)
-        val etIngresos=findViewById<TextView>(R.id.etIngresosAnio)
-        val etGastos=findViewById<TextView>(R.id.etGastos2)
-        val etTotal =findViewById<TextView>(R.id.etTotalAnio)
+        val etDate = findViewById<EditText>(R.id.etDate_info)
+        val etFecha = findViewById<TextView>(R.id.etMesAnio)
+        val etIngresos = findViewById<TextView>(R.id.etIngresosAnio)
+        val etGastos = findViewById<TextView>(R.id.etGastos2)
+        val etTotal = findViewById<TextView>(R.id.etTotalAnio)
 
-        var fecha=etDate.text.toString()
+        var fecha = etDate.text.toString()
 
 
-     /*   val infoMes=db.collection("contabilidad").document(fecha)
+        /*   val infoMes=db.collection("contabilidad").document(fecha)
 
         infoMes.get().addOnSuccessListener {
             etFecha.text = it.get("miMes")as String?
@@ -167,3 +220,4 @@ class InformesActivity : AppCompatActivity() {
 
     }
 }
+

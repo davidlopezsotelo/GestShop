@@ -71,12 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <TextView
-                android:id="@+id/textResum"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:text="RESUMEN" />
-
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -123,37 +117,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <ListView
                         android:id="@+id/etDia"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/estilo_bordes_fino"
-                       />
+                        android:background="@drawable/estilo_bordes_fino" />
 
                     <TextView
                         android:id="@+id/etIngresos"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/estilo_bordes_fino"
-                        />
+                        android:background="@drawable/estilo_bordes_fino" />
 
                     <TextView
                         android:id="@+id/etGastos"
-                        android:layout_width="0dp"
+                        android:layout_width="5dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/estilo_bordes_fino"
-                         />
+                        android:background="@drawable/estilo_bordes_fino" />
 
                     <TextView
                         android:id="@+id/etTotal"
-                        android:background="@drawable/estilo_bordes_fino"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        />
+                        android:background="@drawable/estilo_bordes_fino" />
 
                 </TableRow>
 

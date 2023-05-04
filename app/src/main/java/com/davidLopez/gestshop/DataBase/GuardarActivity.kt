@@ -29,13 +29,13 @@ class GuardarActivity : AppCompatActivity() {
         val datos=intent.extras
 
         var fecha=datos!!.getString("date")
-        val saldo=datos.getDouble("saldo").toString()
+        val saldo=datos.getDouble("saldo").toString()//cambiar a double??
         val ingresos=datos.getDouble("ingresos").toString()
         val gastos=datos.getDouble("gastos").toString()
         val resultado=datos.getDouble("resultado").toString()
         val saldoFinal=datos.getDouble("Saldo final").toString()
 
-        val dia=datos.getInt("miDia")
+        val dia=datos.getInt("miDia").toString()
         val mes=datos.getInt("miMes")
         val year=datos.getInt("miYear")
 
