@@ -35,9 +35,14 @@ class GuardarActivity : AppCompatActivity() {
         val resultado=datos.getDouble("resultado").toString()
         val saldoFinal=datos.getDouble("Saldo final").toString()
 
-        val dia=datos.getInt("miDia").toString()
+        //val dia=datos.getInt("miDia").toString()
+        val dia=datos.getString("miDia")              // modif
         val mes=datos.getInt("miMes")
         val year=datos.getInt("miYear")
+
+
+
+
 
 
 
@@ -71,7 +76,7 @@ class GuardarActivity : AppCompatActivity() {
                         "gastos" to gastos,
                         "resultado" to resultado,
                         "saldo final" to saldoFinal,
-                        "dia " to dia,
+                        "dia " to dia, // poner bien la variable
                         "mes" to mes,
                         "año" to year
                     )

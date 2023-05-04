@@ -59,7 +59,8 @@ class InformesActivity : AppCompatActivity() {
         miMes = mes
         miYear = year
 
-        etDate.setText(" $dia- $mes- $year")
+
+       etDate.setText(" $dia- $mes- $year")
 
         muestraMes()
         muestraAnio()
@@ -91,69 +92,85 @@ class InformesActivity : AppCompatActivity() {
     fun informeMes() {
 
         val etDate = findViewById<EditText>(R.id.etDate_info)
-        val etFecha = findViewById<ListView>(R.id.etDia)
+        val etDia = findViewById<TextView>(R.id.etDia)
         val etIngresos = findViewById<TextView>(R.id.etIngresos)
         val etGastos = findViewById<TextView>(R.id.etGastos)
         val etTotal = findViewById<TextView>(R.id.etTotal)
 
         var fecha = etDate.text.toString()
 
-
+//----------------------------para mostrar el dia del mes-------------------------------------------ok
         val informeDia = db.collection("contabilidad").whereEqualTo("mes", miMes)
         informeDia.get().addOnSuccessListener { resultado ->
+
             var arraydia = ArrayList<String>()
 
             for (documento in resultado) {
-               arraydia.add(documento["dia"].toString())
-//TODO
+               arraydia.add(documento["dia "].toString())// poner bien la variable
             }
-            val arrayAdapter:ArrayAdapter<*>
 
-            arrayAdapter=ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,arraydia)
+            // creamos un StringBuilder para mostrar los elementos de forma vertical
+            val stringBuilder=StringBuilder()
 
-            etFecha.adapter = arrayAdapter
+            for (element in arraydia){
+                stringBuilder.append(element).append("\n")
+            }
+            etDia.text= stringBuilder.toString()
         }
 
-
+//----------------------------para mostrar los ingresos del mes-------------------------------------------
         val informeIngresos = db.collection("contabilidad").whereEqualTo("mes", miMes)
         informeIngresos.get().addOnSuccessListener { resultado ->
+
             var ingresos = ArrayList<String>()
             for (documento in resultado) {
                 ingresos.add( documento["ingresos"].toString())
-
             }
-            val arrayAdapter:ArrayAdapter<String>
 
-            arrayAdapter=ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,ingresos)
+            // creamos un StringBuilder para mostrar los elementos de forma vertical
+            val stringBuilder=StringBuilder()
 
-            etIngresos.text= arrayAdapter.toString()//cambiar
-
+            for (element in ingresos){
+                stringBuilder.append(element).append("\n")
+            }
+            etIngresos.text= stringBuilder.toString()
         }
 
-
-
-           // etIngresos.text = ingresos.toString()
-
-
-
+//----------------------------para mostrar los gastos  del mes-------------------------------------------
         val informeGastos = db.collection("contabilidad").whereEqualTo("mes", miMes)
         informeGastos.get().addOnSuccessListener { resultado ->
             var gastos = ArrayList<String>()
             for (documento in resultado) {
                 gastos.add(documento["gastos"].toString())
             }
-            etGastos.text = gastos.toString()
+
+            // creamos un StringBuilder para mostrar los elementos de forma vertical
+            val stringBuilder=StringBuilder()
+
+            for (element in gastos){
+                stringBuilder.append(element).append("\n")
+            }
+            etGastos.text= stringBuilder.toString()
         }
 
+
+//----------------------------para mostrar los resultados  del mes-------------------------------------------
+
         val informeResultados = db.collection("contabilidad").whereEqualTo("mes", miMes)
+
         informeResultados.get().addOnSuccessListener { resultado ->
             var resultados = ArrayList<String>()
             for (documento in resultado) {
                 resultados.add(documento["resultado"].toString())
             }
-            etTotal.text = resultados.toString()
+
+            // creamos un StringBuilder para mostrar los elementos de forma vertical
+            val stringBuilder=StringBuilder()
+
+            for (element in resultados){
+                stringBuilder.append(element).append("\n")
+            }
+            etTotal.text= stringBuilder.toString()
         }
     }
 

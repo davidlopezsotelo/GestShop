@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ListView
+                    <TextView
                         android:id="@+id/etDia"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
