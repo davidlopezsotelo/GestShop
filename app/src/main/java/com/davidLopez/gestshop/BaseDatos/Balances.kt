@@ -20,26 +20,26 @@ data class Balances(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val Id: Long=0,
+    var Id: Int=0,
 
     @ColumnInfo(name = "fecha")
     @Nonnull
-    val fecha: String,
+    var fecha: String,//cambiar a date??
 
 
     @ColumnInfo(name = "ingresos")
     @Nonnull
-    val ingresos: Double,
+    var ingresos: Double,
 
 
     @ColumnInfo(name = "gastos")
     @Nonnull
-    val gastos: Double,
+    var gastos: Double,
 
 
     @ColumnInfo(name = "resultado")
     @Nonnull
-    val resultado: Double,
+    var resultado: Double,
 
     //***********************************************************************
     /*
@@ -49,17 +49,16 @@ data class Balances(
 
     @ColumnInfo(name = "dia")
     @Nonnull
-    val dia: Int,
+    var dia: Int,
 
 
     @ColumnInfo(name = "mes")
     @Nonnull
-    val mes: Int,
+    var mes: Int,
 
 
     @ColumnInfo(name = "anio")
     @Nonnull
-    val anio: Int,
+    var anio: Int,
     )
-
 

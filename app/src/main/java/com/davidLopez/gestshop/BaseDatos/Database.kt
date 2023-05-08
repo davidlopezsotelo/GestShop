@@ -13,5 +13,5 @@ creacion de la base de dastos
 @Database(entities = [Balances::class], version = 1)
 abstract class Database:RoomDatabase() {
 
-    abstract fun getDaoBalance():DaoBalance
+    abstract fun DaoBalance():DaoBalance
 }

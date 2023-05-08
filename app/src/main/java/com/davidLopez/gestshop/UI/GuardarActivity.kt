@@ -6,12 +6,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Database
 import androidx.room.Room
 import com.davidLopez.gestshop.BaseDatos.Balances
+import com.davidLopez.gestshop.BaseDatos.Database
 import com.davidLopez.gestshop.R
 
 class GuardarActivity : AppCompatActivity() {
+
+
+    lateinit var balance:Balances
+
+    lateinit var room: Database
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guardar)
@@ -73,7 +81,8 @@ class GuardarActivity : AppCompatActivity() {
 
         val datos=intent.extras
 
-        val fecha= datos?.getInt("date")
+
+        val fecha= datos?.getString("date")
         val ingresos= datos?.getDouble("ingresos")
         val gastos= datos?.getDouble("gastos")
         val resultado= datos?.getDouble("resultado")
@@ -85,10 +94,15 @@ class GuardarActivity : AppCompatActivity() {
         val mes= datos?.getInt("mes")
         val anio= datos?.getInt("anio")
 
-        val room=Room.databaseBuilder(applicationContext,com.davidLopez.gestshop.BaseDatos.Database::class.java,"Database").build()
 
-        val balanceDao=room.getDaoBalance()
-        val balance: List<Balances> = balanceDao.getAllDatos()
+        room= Room.databaseBuilder(this,Database::class.java,"dataBase").build()
+
+        var listaBalances  = listOf<Balances>()//?????????
+
+
+
+       // room.DaoBalance().insertDia(listaBalances)
+
 
 
     }

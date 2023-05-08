@@ -34,7 +34,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         botonCuentas.setOnClickListener{
-            val i =Intent(this, CuentasActivity::class.java)
+            val i =Intent(this, InformesActivity::class.java)
             startActivity(i)
         }
 

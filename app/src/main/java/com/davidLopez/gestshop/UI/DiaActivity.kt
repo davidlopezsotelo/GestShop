@@ -21,6 +21,11 @@ class DiaActivity : AppCompatActivity() {//Fin class
         setup()
     }
 
+    var miDia = 0
+    var miMes=0
+    var miYear=0
+
+
     private fun setup(){
 
         // variables para definir botones
@@ -64,27 +69,16 @@ class DiaActivity : AppCompatActivity() {//Fin class
     fun onDateSelected(dia:Int,mes:Int,year:Int){
 
         val etDate=findViewById<EditText>(R.id.etDate)
+
+        miDia= dia
+        miMes=mes
+        miYear=year
+
         etDate.setText( " $dia- $mes- $year")
-//----------------------------------------------------------------provar****************************
-        val Dia= dia
-        val Mes=mes
-        val Anio=year
-/*
-enviar datos  a guardar activity********************************************************************
- */
-        val intent = Intent(this, GuardarActivity::class.java)
-        intent.putExtra("dia" , Dia)
-        intent.putExtra ("mes" , Mes)
-        intent.putExtra("anio" , Anio)
-
-        startActivity(intent)
-
 
     }//ff
 
     //---------------------------------------------------------------------------------------
-
-
 
     // funcion para calcular -------------------------------------------------------------------------------------
 
@@ -146,6 +140,12 @@ enviar datos  a guardar activity************************************************
                 intent.putExtra("gastos", gastos)
                 intent.putExtra("resultado", resultado)
                 intent.putExtra("Saldo final", saldoFin)
+
+                intent.putExtra("miDia", miDia)
+                intent.putExtra("miMes", miMes)
+                intent.putExtra("miYear", miYear)
+
+
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
