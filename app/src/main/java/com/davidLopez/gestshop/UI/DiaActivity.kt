@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Room
+import com.davidLopez.gestshop.BaseDatos.Database
 import com.davidLopez.gestshop.DatePickerFragment
 import com.davidLopez.gestshop.R
 import java.math.RoundingMode
@@ -20,6 +22,8 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
         setup()
     }
+
+    lateinit var room: Database
 
     var miDia = 0
     var miMes=0
@@ -100,6 +104,8 @@ class DiaActivity : AppCompatActivity() {//Fin class
         var saldoFin=0.00
 
 
+
+
         if (fecha.isNotEmpty()) {
 
             saldo = textSaldo.text.toString().toDouble()
@@ -133,23 +139,26 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 //para validar los datos y pasarlos a la BD
 
                 val intent = Intent(this, GuardarActivity::class.java)
-
                 intent.putExtra("date", fecha)
                 intent.putExtra("saldo", saldo)
                 intent.putExtra("ingresos", ingresos)
                 intent.putExtra("gastos", gastos)
                 intent.putExtra("resultado", resultado)
                 intent.putExtra("Saldo final", saldoFin)
-
                 intent.putExtra("miDia", miDia)
                 intent.putExtra("miMes", miMes)
                 intent.putExtra("miYear", miYear)
-
-
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Deves indicar la fecha.", Toast.LENGTH_SHORT).show()
             }
+
+
+            // guardamos los datos el la base de datos
+
+
+
+
         }
     }//ff-------------------------------------------------------------------------------------------
 

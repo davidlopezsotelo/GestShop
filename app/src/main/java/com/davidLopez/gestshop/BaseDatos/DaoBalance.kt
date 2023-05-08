@@ -3,7 +3,10 @@ package com.davidLopez.gestshop.BaseDatos
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
+
 /*
 DATA ACCES OBJET
 
@@ -15,15 +18,16 @@ interface DaoBalance {
 
 
      @Query("Select * from balances WHERE anio LIKE :anio AND mes LIKE:mes ORDER BY dia ASC")
-     fun getDatosFecha(anio:Int,mes:Int):List<Balances>
+      suspend fun getDatosFecha(anio:Int,mes:Int):List<Balances>
 
 
+     @Insert(onConflict = OnConflictStrategy.IGNORE)//?????????
+     suspend fun insertDia(balance: ArrayList<Balances>):List<Balances>
 
-     @Insert()//?????????
-     fun insertDia(fecha:String,ingresos: Double,gastos: Double,resultado: Double,
-                    dia:Int,mes: Int,anio: Int): List<Balances>
+     @Update
+     suspend fun actualizarDia(balance: Balances)
 
      @Delete()
-     fun borrarDia(balance: Balances)
+     suspend fun borrarDia(balance: Balances)
 
 }

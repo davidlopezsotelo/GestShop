@@ -18,27 +18,21 @@ data class Balances(
 
     // se construyen las columnas:
 
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var Id: Int=0,
+    var id:Int,
 
     @ColumnInfo(name = "fecha")
-    @Nonnull
     var fecha: String,//cambiar a date??
 
-
     @ColumnInfo(name = "ingresos")
-    @Nonnull
     var ingresos: Double,
 
-
     @ColumnInfo(name = "gastos")
-    @Nonnull
     var gastos: Double,
 
-
     @ColumnInfo(name = "resultado")
-    @Nonnull
     var resultado: Double,
 
     //***********************************************************************

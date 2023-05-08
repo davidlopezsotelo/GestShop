@@ -16,8 +16,6 @@ class GuardarActivity : AppCompatActivity() {
 
     lateinit var balance:Balances
 
-    lateinit var room: Database
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,13 +93,12 @@ class GuardarActivity : AppCompatActivity() {
         val anio= datos?.getInt("anio")
 
 
-        room= Room.databaseBuilder(this,Database::class.java,"dataBase").build()
-
-        var listaBalances  = listOf<Balances>()//?????????
+        //room= Room.databaseBuilder(this,Database::class.java,"dataBase").build()
 
 
 
-       // room.DaoBalance().insertDia(listaBalances)
+
+
 
 
 

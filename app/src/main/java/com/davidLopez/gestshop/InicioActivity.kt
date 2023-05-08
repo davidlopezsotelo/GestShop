@@ -6,32 +6,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.davidLopez.gestshop.Log.LoginActivity
 import com.davidLopez.gestshop.Log.RegistroActivity
 import com.davidLopez.gestshop.UI.MenuActivity
+import com.davidLopez.gestshop.viewmodel.MainViewModel
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-private lateinit var analytics: FirebaseAnalytics
 private lateinit var auth: FirebaseAuth
-
-
 class InicioActivity : AppCompatActivity() {
 
+    //lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
 
-        analytics = Firebase.analytics
-        auth=Firebase.auth
 
+        auth= Firebase.auth
 
         setup()
-
     }
 
 
@@ -40,6 +40,10 @@ class InicioActivity : AppCompatActivity() {
 
     private fun setup(){
 
+//TODO ENLAZAR MODELO CON LIVE DATA
+
+       // viewModel=ViewModelProvider(this).get()
+       // viewModel.iniciar()
 
         val botonEntrar=findViewById<Button>(R.id.buttonEntrar)
         val botonRegistro=findViewById<Button>(R.id.buttonRegistroIni)
@@ -85,7 +89,7 @@ class InicioActivity : AppCompatActivity() {
 //si el usuario tiene sesion abierta, te manda al menu principal
 
     fun VerificarUsuario(){
-       // FirebaseUser= FirebaseAuth.getInstance().currentUser!!
+        //FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
         val user = Firebase.auth.currentUser
         if (user != null) {
