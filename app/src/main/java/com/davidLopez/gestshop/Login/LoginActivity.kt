@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.DataBase.GuardarActivity
 import com.davidLopez.gestshop.UI.MenuActivity
 import com.davidLopez.gestshop.R
 import com.google.android.gms.tasks.OnCompleteListener
@@ -29,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
         //inicializamos Firebase
         auth = Firebase.auth
 
-
         setup()
     }
 
@@ -37,8 +37,6 @@ class LoginActivity : AppCompatActivity() {
     var Password = ""
 
     private fun setup() {
-
-
 
         val BotonEntrar= findViewById<Button>(R.id.button_entrar)
         val BotonRegistro=findViewById<Button>(R.id.buttonRegistroLog)
@@ -63,6 +61,12 @@ class LoginActivity : AppCompatActivity() {
         Email=TextoEmailLog.text.toString()
         Password=TextoContrasenaLog.text.toString()
 
+        //mandamos email al activity guardar
+
+       val intent = Intent(this, GuardarActivity::class.java)
+        intent.putExtra("email" , Email)
+
+
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){// verifica que se introduce un correo
             Toast.makeText(this,"Correo no valido.",Toast.LENGTH_SHORT).show()
         }
@@ -84,8 +88,8 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this,OnCompleteListener {task ->
 
                 if (task.isSuccessful){
-                    val user=auth.currentUser
-                    Toast.makeText(this,"Te has identificado correctAamente.",Toast.LENGTH_SHORT).show()
+                    //val user=auth.currentUser
+                    Toast.makeText(this,"Te has identificado correctamente.",Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MenuActivity::class.java))
                     finish()
                 }else{
@@ -94,7 +98,6 @@ class LoginActivity : AppCompatActivity() {
                 }
         })
     }
-
 
     private fun showRellenar() {
         val builder= AlertDialog.Builder(this)// creamos un cuadro de dialogo
@@ -105,8 +108,5 @@ class LoginActivity : AppCompatActivity() {
         val dialog: AlertDialog =builder.create()
         dialog.show()
     }
-
-
-
 
 }

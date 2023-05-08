@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.DataBase.GuardarActivity
 import com.davidLopez.gestshop.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -59,7 +60,6 @@ class RegistroActivity : AppCompatActivity() {
         Email=TextoEmail.text.toString()
         Password=TextoContrasena.text.toString()
         RepPassword=TextoRepContrasena.text.toString()
-
 
 
         if (TextUtils.isEmpty(Nombre)){

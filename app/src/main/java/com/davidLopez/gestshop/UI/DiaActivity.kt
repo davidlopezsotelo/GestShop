@@ -25,8 +25,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
     var miMes=0
     var miYear=0
 
-    var diaBD=""
-
 
     private fun setup(){
 
@@ -75,20 +73,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
          miMes=mes
          miYear=year
 
-        diaBD=miDia.toString()                                    //modif
-
-        if (dia < 10){
-
-            diaBD="0$dia"                                         //modif
-
-            etDate.setText( "0$dia- $mes- $year")
-
-
-        }
-        else {
-            diaBD=dia.toString()
-            etDate.setText( " $dia- $mes- $year")                 //modif
-        }
+        etDate.setText( " $dia- $mes- $year")
 
     }//ff
 
@@ -136,7 +121,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
             Toast.makeText(this,"Debes indicar la fecha.", Toast.LENGTH_SHORT).show()
         }
 
-
         val botonGuardar=findViewById<Button>(R.id.buttonGuardaDia)
 
         botonGuardar.setOnClickListener{
@@ -155,7 +139,7 @@ class DiaActivity : AppCompatActivity() {//Fin class
                 intent.putExtra("resultado", resultado)
                 intent.putExtra("Saldo final", saldoFin)
 //*******************************************************************************
-                intent.putExtra("miDia", diaBD)
+                intent.putExtra("miDia", miDia)
                 intent.putExtra("miMes", miMes)
                 intent.putExtra("miYear", miYear)
 

@@ -18,7 +18,6 @@ import com.google.firebase.ktx.Firebase
 class InformesActivity : AppCompatActivity() {
 
     val db = Firebase.firestore
-
     var miDia = 0
     var miMes = 0
     var miYear = 0
@@ -38,20 +37,17 @@ class InformesActivity : AppCompatActivity() {
         etDate.setOnClickListener {
             showDatePickerDialog()//crear la funcion!!!!!!
         }
-
-
     }//ff
 
     // CALENDARIO-----------------------------------------------------------------------------------
     //funcion que inicializara el calendario
     private fun showDatePickerDialog() {
-
         val datePicker = DatePickerFragment { dia, mes, year -> onDateSelected(dia, mes, year) }
         datePicker.show(supportFragmentManager, "datePicker")
     }//ff
 
-// funcion que selecciona fecha
 
+// funcion que selecciona fecha
     fun onDateSelected(dia: Int, mes: Int, year: Int) {
 
         val etDate = findViewById<EditText>(R.id.etDate_info)
@@ -59,14 +55,12 @@ class InformesActivity : AppCompatActivity() {
         miMes = mes
         miYear = year
 
-
        etDate.setText(" $dia- $mes- $year")
 
         muestraMes()
         muestraAnio()
         informeMes()
         informeAnio()
-
     }//ff
 
     @SuppressLint("SetTextI18n")
@@ -88,7 +82,6 @@ class InformesActivity : AppCompatActivity() {
             12 -> nombreMes.text = "TOTAL MOVIMIENTOS MES: DICIEMBRE"
         }
     }
-
     fun informeMes() {
 
         val etDate = findViewById<EditText>(R.id.etDate_info)
@@ -97,7 +90,7 @@ class InformesActivity : AppCompatActivity() {
         val etGastos = findViewById<TextView>(R.id.etGastos)
         val etTotal = findViewById<TextView>(R.id.etTotal)
 
-        var fecha = etDate.text.toString()
+        etDate.text.toString()
 
 //----------------------------para mostrar el dia del mes-------------------------------------------ok
         val informeDia = db.collection("contabilidad").whereEqualTo("mes", miMes)
@@ -106,7 +99,7 @@ class InformesActivity : AppCompatActivity() {
             var arraydia = ArrayList<String>()
 
             for (documento in resultado) {
-               arraydia.add(documento["dia "].toString())// poner bien la variable
+               arraydia.add(documento["dia"].toString())
             }
 
             // creamos un StringBuilder para mostrar los elementos de forma vertical
