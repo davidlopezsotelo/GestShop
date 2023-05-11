@@ -1,4 +1,4 @@
-package com.davidLopez.gestshop.BaseDatos
+package com.davidLopez.gestshop.BaseDatos.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

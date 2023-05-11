@@ -1,20 +1,21 @@
 package com.davidLopez.gestshop.UI
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
-import com.davidLopez.gestshop.BaseDatos.Balances
 import com.davidLopez.gestshop.BaseDatos.Database
+import com.davidLopez.gestshop.BaseDatos.entities.Balances
 import com.davidLopez.gestshop.R
 
 class GuardarActivity : AppCompatActivity() {
 
 
-    lateinit var balance:Balances
+    lateinit var balance: Balances
 
 
 
@@ -93,7 +94,30 @@ class GuardarActivity : AppCompatActivity() {
         val anio= datos?.getInt("anio")
 
 
-        //room= Room.databaseBuilder(this,Database::class.java,"dataBase").build()
+        val db=Room.databaseBuilder(
+            applicationContext,Database::class.java,"database"
+        ).build()
+
+        var registro=ContentValues()
+        registro.put("fecha",fecha)
+        registro.put("ingresos",ingresos)
+        registro.put("gastos",gastos)
+        registro.put("resultado",resultado)
+        registro.put("dia",dia)
+        registro.put("mes",mes)
+        registro.put("año",anio)
+        //registro.put("fecha",fecha)
+
+        var reg = Balances(2,fecha!!,ingresos!!,gastos!!,resultado!!,dia!!,mes!!, anio!!)
+
+        db.daoBalance().insertDia(reg)
+
+       // db.daoBalance().insertDia(registro)
+
+
+
+
+
 
 
 

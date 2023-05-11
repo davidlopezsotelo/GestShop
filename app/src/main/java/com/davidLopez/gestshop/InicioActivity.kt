@@ -2,20 +2,14 @@ package com.davidLopez.gestshop
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
+import androidx.appcompat.app.AppCompatActivity
 import com.davidLopez.gestshop.Log.LoginActivity
 import com.davidLopez.gestshop.Log.RegistroActivity
 import com.davidLopez.gestshop.UI.MenuActivity
-import com.davidLopez.gestshop.viewmodel.MainViewModel
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

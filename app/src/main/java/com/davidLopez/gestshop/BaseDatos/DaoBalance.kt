@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.davidLopez.gestshop.BaseDatos.entities.Balances
 
 /*
 DATA ACCES OBJET
@@ -20,9 +21,8 @@ interface DaoBalance {
      @Query("Select * from balances WHERE anio LIKE :anio AND mes LIKE:mes ORDER BY dia ASC")
       suspend fun getDatosFecha(anio:Int,mes:Int):List<Balances>
 
-
      @Insert(onConflict = OnConflictStrategy.IGNORE)//?????????
-     suspend fun insertDia(balance: ArrayList<Balances>):List<Balances>
+     fun insertDia( balance: Balances)
 
      @Update
      suspend fun actualizarDia(balance: Balances)
