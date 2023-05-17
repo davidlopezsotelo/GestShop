@@ -15,6 +15,8 @@ class MySQLite (context: Context) : SQLiteOpenHelper(context,"GestShop.db",null,
         val CAMPO_ID ="_id"
         val CAMPO_NOMBRE ="nombre"
         val CAMPO_EMAIL ="email"
+
+        val CAMPO_PASWORD ="pasword"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -23,7 +25,7 @@ class MySQLite (context: Context) : SQLiteOpenHelper(context,"GestShop.db",null,
 
        val creacionUsuario ="CREATE TABLE ${TABLA_USUARIOS}" +
                 "(${CAMPO_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "${CAMPO_NOMBRE} TEXT, ${CAMPO_EMAIL} TEXT)"
+                "${CAMPO_NOMBRE} TEXT, ${CAMPO_EMAIL} TEXT, ${CAMPO_PASWORD} TEXT)"
 
         db!!.execSQL(creacionUsuario)
     }
@@ -39,10 +41,11 @@ class MySQLite (context: Context) : SQLiteOpenHelper(context,"GestShop.db",null,
 
     // funcion para insertar usuario en base de datos
 
-    fun insertUsuario(nombre:String,email:String){
+    fun insertUsuario(nombre:String,email:String,pasword:String){
         val datos = ContentValues()
         datos.put(CAMPO_NOMBRE,nombre)
         datos.put(CAMPO_EMAIL,email)
+        datos.put(CAMPO_PASWORD,pasword)
 
         val db=this.writableDatabase
         db.insert(TABLA_USUARIOS,null,datos)
@@ -64,7 +67,7 @@ class MySQLite (context: Context) : SQLiteOpenHelper(context,"GestShop.db",null,
 
     // funcion para modificar usuario
 
-    fun modificarUsuario(id:Int,nombre:String,email:String){
+    fun modificarUsuario(id:Int,nombre:String,email:String,pasword:String){
 
         val args = arrayOf(id.toString())
 
@@ -72,6 +75,7 @@ class MySQLite (context: Context) : SQLiteOpenHelper(context,"GestShop.db",null,
 
         datos.put(CAMPO_NOMBRE,nombre)
         datos.put(CAMPO_EMAIL,email)
+        datos.put(CAMPO_PASWORD,pasword)
 
         val db=this.writableDatabase
         db.update(TABLA_USUARIOS,datos,"${CAMPO_ID}=?",args)
