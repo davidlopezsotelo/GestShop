@@ -14,9 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-
 //https://www.youtube.com/watch?v=XMylQ1cxpFM&list=PLhcYacorV7U4Qsq-I9RH80mVGJ_8IyOPW&index=11&t=959s
-
 
 class RegistroActivity : AppCompatActivity() {
 
@@ -25,13 +23,10 @@ class RegistroActivity : AppCompatActivity() {
     var Password = ""
     var RepPassword=""
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
-
         setup()
-
     }
     private fun setup() {
 
@@ -46,7 +41,6 @@ class RegistroActivity : AppCompatActivity() {
             startActivity(i)
         }
     }
-
 
     private fun validarDatos(){
 

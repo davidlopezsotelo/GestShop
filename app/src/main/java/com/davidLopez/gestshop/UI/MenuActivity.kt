@@ -17,7 +17,6 @@ class MenuActivity : AppCompatActivity() {
         setup()
 
     }
-
     private fun setup() {
         //botones-----------------------------------------------------------------------------------
 
@@ -86,7 +85,6 @@ class MenuActivity : AppCompatActivity() {
             //mostrar
             alert.show()
         }
-
     }
     private fun salir() {
         FirebaseAuth.getInstance().signOut()

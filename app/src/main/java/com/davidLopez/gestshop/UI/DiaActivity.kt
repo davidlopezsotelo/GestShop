@@ -7,13 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.room.Room
-import com.davidLopez.gestshop.BaseDatos.Database
 import com.davidLopez.gestshop.DatePickerFragment
 import com.davidLopez.gestshop.R
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import kotlin.properties.Delegates
 
 class DiaActivity : AppCompatActivity() {//Fin class
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +19,6 @@ class DiaActivity : AppCompatActivity() {//Fin class
 
         setup()
     }
-
-    lateinit var room: Database
 
     var miDia = 0
     var miMes=0
