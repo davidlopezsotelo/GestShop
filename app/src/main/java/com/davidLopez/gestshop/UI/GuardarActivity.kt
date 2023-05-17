@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
-import com.davidLopez.gestshop.BaseDatos.Database
+import com.davidLopez.gestshop.BaseDatos.MyDatabase
 import com.davidLopez.gestshop.BaseDatos.entities.Balances
 import com.davidLopez.gestshop.R
 
@@ -95,7 +95,7 @@ class GuardarActivity : AppCompatActivity() {
 
 
         val db=Room.databaseBuilder(
-            applicationContext,Database::class.java,"database"
+            applicationContext,MyDatabase::class.java,"database"
         ).build()
 
         var registro=ContentValues()

@@ -1,4 +1,4 @@
-package com.davidLopez.gestshop.BaseDatos
+package com.davidLopez.gestshop.BaseDatos.DAOs
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -15,7 +15,7 @@ El siguiente código define un DAO llamado .
  proporciona los métodos que el resto de la app usa para interactuar con los datos de la tabla
  */
 @Dao
-interface DaoBalance {
+interface BalanceDao {
 
 
      @Query("Select * from balances WHERE anio LIKE :anio AND mes LIKE:mes ORDER BY dia ASC")

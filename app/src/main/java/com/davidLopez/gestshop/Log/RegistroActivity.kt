@@ -1,17 +1,14 @@
 package com.davidLopez.gestshop.Log
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
+
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.davidLopez.gestshop.R
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+
+import androidx.appcompat.app.AppCompatActivity
+import com.davidLopez.gestshop.BaseDatos.entities.Usuario
+import com.davidLopez.gestshop.InicioActivity
+import com.davidLopez.gestshop.databinding.ActivityRegistroBinding
 
 
 
@@ -20,20 +17,53 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroActivity : AppCompatActivity() {
 
-    var Nombre=""
-    var Email=""
-    var Password = ""
-    var RepPassword=""
+
+     private lateinit var binding: ActivityRegistroBinding
+     private val viewModel:UsuarioViewModel = TODO()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
-
-        setup()
-
+        binding = ActivityRegistroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //setup()
     }
-    private fun setup() {
+
+    override fun onStart() {
+        super.onStart()
+        binding.buttonRegistroReg.setOnClickListener {
+            registro()
+        }
+    }
+
+    private fun registro() {
+        val nombre = binding.NombreEt.text.toString()
+        val email = binding.correoEt.text.toString()
+        val password = binding.contrasenaEt.text.toString()
+        val repPassword = binding.RepContrasenaEt.text.toString()
+
+        if (nombre.isBlank() || email.isBlank() || password.isBlank() || repPassword.isBlank()) {
+            Toast.makeText(this, "Deves rellenar todos los campos", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (password != repPassword) {
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+       viewModel.save (Usuario(nombre, password)).observe(this) {
+            if (!it) {
+                Toast.makeText(this, "Error al crear usuario", Toast.LENGTH_SHORT).show()
+            } else {
+                startActivity(Intent(this, InicioActivity::class.java))
+
+                finish()
+            }
+
+        }
+
+
+        /* private fun setup() {
 
         val BotonRegistro = findViewById<Button>(R.id.buttonRegistroReg)
         val BotonLogin = findViewById<Button>(R.id.button_salir_reg)//
@@ -73,61 +103,16 @@ class RegistroActivity : AppCompatActivity() {
         }else crearCuenta()
 
     }
+*/
+
+        //guardamos el usuario en la base de datos
 
 
-    private fun crearCuenta() {
-
-        //CREAR EL USUARIO EN FIREBASE
-
-        FirebaseAuth.getInstance()
-            .createUserWithEmailAndPassword(
-                Email,Password
-            )
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showRegistro()
-                    guardarInfo()
-
-                } else {
-                    showAlert()// mensaje de alerta
-                }
-            }
-    }
-
-    //guardamos el usuario en la base de datos
-    private fun guardarInfo() {
-
-        val db = FirebaseFirestore.getInstance()
-        db.collection("users").document(Email).set(
-            hashMapOf("nombre" to Nombre,
-            "correo" to Email,
-            "contraseña" to Password)
-        )
-    }
-
-    //creamos una funcion que mostrara un  mensaje de alerta mediante un cuadro de dialogo----------
-    private fun showRegistro() {
-
-        val builder= AlertDialog.Builder(this)// creamos un cuadro de dialogo
-        builder.setTitle("Registro")
-        builder.setMessage("Te has registrado correctamente.")
-        builder.setPositiveButton("aceptar",null)
-        val dialog: AlertDialog =builder.create()
-        dialog.show()
-    }
-
-    //creamos una funcion que mostrara un  mensaje de alerta mediante un cuadro de dialogo---------
-    private fun showAlert(){
-
-        val builder= AlertDialog.Builder(this)// creamos un cuadro de dialogo
-
-        builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error registrando al usuario.")
-        builder.setPositiveButton("aceptar",null)
-        val dialog: AlertDialog =builder.create()
-        dialog.show()
-    }//ff
+        //creamos una funcion que mostrara un  mensaje de alerta mediante un cuadro de dialogo----------
 
 
 
-}//fin class
+
+
+    }//fin class
+}

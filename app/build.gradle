@@ -26,6 +26,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures{
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -40,10 +44,9 @@ dependencies {
     implementation('androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1')
     implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.6.1')
     implementation('androidx.lifecycle:lifecycle-livedata-ktx:2.6.1')
-
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
