@@ -3,58 +3,40 @@ package com.davidLopez.gestshop
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.davidLopez.gestshop.Log.LoginActivity
 import com.davidLopez.gestshop.Log.RegistroActivity
-import com.davidLopez.gestshop.UI.MenuActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.davidLopez.gestshop.databinding.ActivityInicioBinding
 
-private lateinit var auth: FirebaseAuth
 class InicioActivity : AppCompatActivity() {
 
-    //lateinit var viewModel: MainViewModel
+    lateinit var binding: ActivityInicioBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inicio)
+        binding= ActivityInicioBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-
-        auth= Firebase.auth
-
-        setup()
     }
+    override fun onStart() {
+        super.onStart()
 
+        binding.buttonEntrar.setOnClickListener{
+            //VerificarUsuario()
 
-
-
-
-    private fun setup(){
-
-//TODO ENLAZAR MODELO CON LIVE DATA
-
-       // viewModel=ViewModelProvider(this).get()
-       // viewModel.iniciar()
-
-        val botonEntrar=findViewById<Button>(R.id.buttonEntrar)
-        val botonRegistro=findViewById<Button>(R.id.buttonRegistroIni)
-        val botonSalir=findViewById<Button>(R.id.button_salir)
-
-        botonEntrar.setOnClickListener{
-            VerificarUsuario()
+           startActivity(Intent(this, LoginActivity::class.java))
+            finish()
 
         }
 
-        botonRegistro.setOnClickListener{
+        binding.buttonRegistroIni.setOnClickListener{
             val i=Intent(this, RegistroActivity::class.java)
             startActivity(i)
 
         }
 
-        botonSalir.setOnClickListener{
+        binding.buttonSalir.setOnClickListener{
             //creamos el alert Dialog
             val dialog= AlertDialog.Builder(this)
             //creamos el mensaje que aparecera
@@ -72,17 +54,19 @@ class InicioActivity : AppCompatActivity() {
             //mostrar
             alert.show()
         }
+
+
     }
 
     private fun salir() {
-        FirebaseAuth.getInstance().signOut()
+
         finish()
     }
 
 
 //si el usuario tiene sesion abierta, te manda al menu principal
 
-    fun VerificarUsuario(){
+    /*fun VerificarUsuario(){
         //FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
         val user = Firebase.auth.currentUser
@@ -94,8 +78,7 @@ class InicioActivity : AppCompatActivity() {
             // No user is signed in
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
-        }
+        }*/
 
     }
 
-}

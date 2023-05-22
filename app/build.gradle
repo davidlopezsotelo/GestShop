@@ -18,6 +18,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions{
+
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -41,9 +48,44 @@ android {
 
 dependencies {
 
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1"
+
+    // Annotation processor
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:2.6.1"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
+
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation "androidx.lifecycle:lifecycle-service:2.6.1"
+
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation "androidx.lifecycle:lifecycle-process:2.6.1"
+
+    // optional - ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.6.1"
+
+    // optional - Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+
+    // optional - Test helpers for Lifecycle runtime
+    testImplementation "androidx.lifecycle:lifecycle-runtime-testing:2.6.1"
+
     implementation('androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1')
     implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.6.1')
     implementation('androidx.lifecycle:lifecycle-livedata-ktx:2.6.1')
+
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -54,9 +96,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx:24.6.0'
     implementation 'androidx.room:room-common:2.5.1'
     implementation 'androidx.room:room-ktx:2.5.1'
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.10.1'
     testImplementation 'junit:junit:4.13.2'
    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'androidx.activity:activity-ktx:1.7.1'
+
 }

@@ -18,7 +18,6 @@ data class Balances(
 
     // se construyen las columnas:
 
-
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id:Int,
@@ -37,7 +36,7 @@ data class Balances(
 
     //***********************************************************************
     /*
-    creo los dias para seleccionar cada archivo for fecha y luego
+    creo los dias para seleccionar cada archivo por fecha y luego
     mostrarlo por dia mes, mes o resumen mensual de año
      */
 

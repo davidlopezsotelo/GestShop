@@ -25,8 +25,6 @@ abstract class MyDatabase:RoomDatabase() {
     abstract fun daoBalance(): BalanceDao
     abstract fun usuarioDao(): UsuarioDao
 
-
-
     companion object {
         private lateinit var db: MyDatabase
 

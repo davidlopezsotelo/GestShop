@@ -6,21 +6,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.davidLopez.gestshop.BaseDatos.entities.Usuario
 import com.davidLopez.gestshop.app.App
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class UsuarioViewModel:ViewModel() {
-    private val db = App.getUsuario()
+    private val db = App.getDatabase()
 
     fun save(usuario: Usuario): MutableLiveData<Boolean> {
         val data = MutableLiveData<Boolean>()
         viewModelScope.launch {
+
             try {
                 val id = withContext(Dispatchers.IO) {
-                    //db.usuarioDao().save(usuario)
+                     db.usuarioDao().save(usuario)
+
                 }
-                //usuario.id = id
+                usuario.id = id
                 App.saveUser(usuario)
                 data.value = true
             } catch (ex: SQLiteConstraintException) {
@@ -33,7 +36,7 @@ class UsuarioViewModel:ViewModel() {
     fun login(usuario: Usuario): MutableLiveData<Result> {
         val data = MutableLiveData<Result>()
         viewModelScope.launch {
-            /*try {
+            try {
                 val usuarioFromDB: Usuario? = withContext(Dispatchers.IO) {
                     db.usuarioDao().findOneByName(usuario.nombre)
                 }
@@ -48,10 +51,8 @@ class UsuarioViewModel:ViewModel() {
                 }
             } catch (ex: SQLiteConstraintException) {
                 data.value = Result(false, "Revisa los datos introducidos")
-            }*/
-
+            }
         }
-
         return data
     }
 }

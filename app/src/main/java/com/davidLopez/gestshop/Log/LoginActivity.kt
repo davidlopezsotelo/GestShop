@@ -8,9 +8,14 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import com.davidLopez.gestshop.BaseDatos.entities.Usuario
+import com.davidLopez.gestshop.InicioActivity
 import com.davidLopez.gestshop.UI.MenuActivity
 import com.davidLopez.gestshop.R
+import com.davidLopez.gestshop.app.App
+import com.davidLopez.gestshop.databinding.ActivityLoginBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -18,79 +23,52 @@ import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
-    //Creamos variable Firebase
-
-    private lateinit var auth: FirebaseAuth
+    lateinit var binding: ActivityLoginBinding
+    private val viewModel: UsuarioViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        //inicializamos Firebase
-        auth = Firebase.auth
-
-
-        setup()
     }
 
-    var Email=""
-    var Password = ""
+    override fun onStart() {
+        super.onStart()
 
-    private fun setup() {
-
-        val BotonEntrar= findViewById<Button>(R.id.button_entrar)
-        val BotonRegistro=findViewById<Button>(R.id.buttonRegistroLog)
-
-        BotonEntrar.setOnClickListener{
-            //hacer login en firebase
-            ValidarDatos()
-        }
-
-        BotonRegistro.setOnClickListener{
-            val j=Intent(this, RegistroActivity::class.java)
-            startActivity(j)
+        val usuario = App.getUsuario()
+        usuario?.let {
+            startActivity(Intent(this, InicioActivity::class.java))
             finish()
         }
+
+        binding.buttonEntrar.setOnClickListener {
+            login()
+        }
+        binding.buttonRegistroLog.setOnClickListener {
+            registro()
+        }
     }
 
-    private fun ValidarDatos() {
-
-        val TextoEmailLog = findViewById<EditText>(R.id.correoEt_login)
-        val TextoContrasenaLog = findViewById<EditText>(R.id.contrasenaEt_login)
-
-        Email=TextoEmailLog.text.toString()
-        Password=TextoContrasenaLog.text.toString()
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){// verifica que se introduce un correo
-            Toast.makeText(this,"Correo no valido.",Toast.LENGTH_SHORT).show()
+    private fun login() {
+        val correo = binding.correoEtLogin.text.toString()
+        val password = binding.contrasenaEtLogin.text.toString()
+        if (correo.isBlank() || password.isBlank()) {
+            Toast.makeText(this,"deves rellenar los campos",Toast.LENGTH_LONG).show()
+            return
         }
-        else if (TextUtils.isEmpty(Password)){//verifica que se introduce un texto y no esta vacio
-            Toast.makeText(this,"Ingrese contraseña.",Toast.LENGTH_SHORT).show()
+        viewModel.login(Usuario(correo, password)).observe(this) {
+            if (!it.result) {
+               showRellenar()
+            } else {
+                startActivity(Intent(this, InicioActivity::class.java))
+                finish()
+            }
         }
-        else{//si las dos anteriores condiciones se cumplen ejecuta la funcion
-            LoginUsuario()
-        }
-
     }
-
-    //Funcion que verifica si el usuario tiene cuenta.
-    private fun LoginUsuario() {
-
-        //Iniciamos sesion con firebase
-
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(Email,Password)
-            .addOnCompleteListener(this,OnCompleteListener {task ->
-
-                if (task.isSuccessful){
-                    val user=auth.currentUser
-                    Toast.makeText(this,"Te has identificado correctAamente.",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MenuActivity::class.java))
-                    finish()
-                }else{
-                    Toast.makeText(this,"Registro fallido.",Toast.LENGTH_SHORT).show()
-                    showRellenar()
-                }
-        })
+    private fun registro() {
+        startActivity(Intent(this, RegistroActivity::class.java))
+        finish()
     }
 
 
@@ -103,8 +81,5 @@ class LoginActivity : AppCompatActivity() {
         val dialog: AlertDialog =builder.create()
         dialog.show()
     }
-
-
-
 
 }
